@@ -66,18 +66,22 @@ const Navbar = () => {
                             <Link
                                 key={index}
                                 href={item.href}
-                                className={`relative p-2 text-primarycolor font-medium text-sm xl:text-md ${item.name === "Apply" ? "bg-primarycolor text-white px-4 py-2 rounded-full" : ""}`}
+                                className={`relative p-1 px-2 text-primarycolor font-medium text-sm xl:text-md ${item.name === "Apply" ? "bg-primarycolor text-white px-4 py-2 rounded-full" : ""}`}
+                                style={{
+                                    color: item.href === pathname || item.name === "Apply" ? "#fff" : "#47706B"
+                                }}
                             >
-                                {item.name}
                                 {
                                     item.href === pathname && item.name !== "Apply" && (
                                         <motion.span
                                             layoutId="nav-item-bottom"
-                                            className="absolute left-0 bottom-0 w-full h-0 border border-4 border-primarycolor border-t-transparent border-s-transparent border-e-transparent bg-transparent"
+                                            className="absolute left-0 top-0 w-full h-full rounded-sm bg-primarycolor -z-10"
                                         />
                                     )
                                 }
-
+                                <span className="z-10">
+                                    {item.name}
+                                </span>
                             </Link>
                         ))
                     }

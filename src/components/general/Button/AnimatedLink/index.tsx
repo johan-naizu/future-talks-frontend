@@ -11,7 +11,7 @@ const AnimatedLink = ({ title, href, hover, invert }: { title: string, href?: st
             target="_blank"
         >
             <AnimatedText title={title} top={true} hovered={hover} invert={invert} />
-            <div className="absolute top-0">
+            <div className="absolute top-0 w-full">
                 <AnimatedText title={title} top={false} hovered={hover} invert={invert} />
             </div>
         </a>
