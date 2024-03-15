@@ -40,7 +40,7 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     return (
         <>
-            <nav className="w-full h-16 bg-none flex relative overflow-hidden">
+            <nav className="w-full h-16 bg-none flex fixed top-0 z-[10000] overflow-hidden bg-white/80">
                 <div className={`h-full flex items-center w-full md:w-1/3 py-2 px-4 bg-[#79BCB8] md:rounded-br-2xl justify-between gap-4 font-semibold text-sm xl:text-2xl ${neueRegrade.className}`}>
                     <Image src={logo} alt="logo" width={40} />
                     <span className="text-white hidden md:block"> Future Talks </span>
