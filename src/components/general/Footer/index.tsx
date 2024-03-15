@@ -65,7 +65,7 @@ const Footer = () => {
             </div>
             <div className="col-start-1 col-span-2 row-start-4 row-span-4 p-2 border border-0 border-b-2 border-e-2">
                 <div className="overflow-hidden w-full lg:w-1/2  p-2 ">
-                    Do you want to know which college to join or which course to pursue? Get in touch with us!
+                    Do you want to know which college to join or which course to pursue? <br /> Get in touch with us!
                 </div>
             </div>
 

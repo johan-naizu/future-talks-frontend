@@ -25,10 +25,10 @@ const Contact = () => {
     }
 
     return (
-        <div className="w-screen min-h-screen h-full flex flex-col relative">
+        <div className="w-screen min-h-screen h-full flex flex-col relative overflow-hidden">
             <Image
                 src={grid}
-                className="absolute w-full h-full -z-10 object-fit-cover"
+                className="absolute w-full h-full top-0 left-0 -z-10 object-cover"
                 alt="grid"
                 width={1000}
                 height={1000}
@@ -37,7 +37,7 @@ const Contact = () => {
             <h1 className={`w-full font-extrabold text-2xl text-primarycolor text-center p-16 ${neueRegrade.className}`}> Get in touch </h1>
 
             <div className="w-full h-full flex mb-8">
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center absolute -top-16 -right-32 sm:-right-32 sm:-top-32 sm:-right-64 -z-10 opacity-70 lg:static lg:z-10">
                     <Image
                         src={contactImage}
                         alt="contactImage"
@@ -46,7 +46,7 @@ const Contact = () => {
                     />
                 </div>
                 <div className="w-full h-full flex items-center justify-center">
-                    <form className="shadow-xl rounded-xl bg-[#79BCB8] p-8 w-2/3" onSubmit={handleSubmit}>
+                    <form className="shadow-xl rounded-xl bg-[#79BCB8] p-8 md:w-2/3" onSubmit={handleSubmit}>
                         <div className="flex flex-col">
                             <label htmlFor="name">Name</label>
                             <input
@@ -78,7 +78,7 @@ const Contact = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="flex flex-col items-start justify-center">
+                        <div className="flex flex-col items-start justify-center mt-2">
                             <button className="flex bg-white rounded-full font-medium text-[#79BCB8] text-xs gap-2 p-2 items-center justify-center">
                                 <Image src={send} alt="send" width={10} height={10} />
                                 Submit

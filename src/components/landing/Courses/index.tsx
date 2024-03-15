@@ -41,7 +41,7 @@ const Courses = () => {
     return (
         <div className={`w-screen flex flex-col min-h-screen h-full bg-[#f5f5f5] ${neueRegrade.className}`}>
             <h1 className="text-3xl font-extrabold p-4 w-full text-center mt-4"> Trending Courses </h1>
-            <div className="h-full w-full p-32 2xl:px-48 grid grid-cols-3 grid-row s-2 items-center justify-center gap-16">
+            <div className="h-full w-full p-4 md:p-32 2xl:px-48 grid grid-cols-1 lg:grid-cols-3 lg:grid-rows-2 items-center justify-center gap-16">
                 {
                     coursesData.map((course, index) => (
                         <div key={index} className="w-full h-full flex items-center justify-center">

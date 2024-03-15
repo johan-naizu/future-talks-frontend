@@ -4,7 +4,7 @@ import Button from "@/components/general/Button";
 import { motion } from "framer-motion";
 import { neueRegrade } from "@/fonts";
 
-
+//Todo: change hover animation
 const Card = ({
     title,
     description,
@@ -19,9 +19,6 @@ const Card = ({
     return (
         <motion.div
             className="w-80 h-96 rounded-xl bg-white shadow-2xl p-2"
-            whileHover={{
-                rotate: "-1deg"
-            }}
         >
             <div className="w-full h-1/2 rounded-xl bg-neutral-300 flex items-center justify-center">
                 <Image

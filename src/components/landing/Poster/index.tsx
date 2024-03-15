@@ -4,6 +4,8 @@ import checkeredBg from '/public/Gride.svg';
 import Card from "./Card";
 import { useScroll } from 'framer-motion';
 
+
+//TODO: TRY OUT SWIPABLE CARDS IN THE FUTURE
 const Poster = () => {
     const { scrollYProgress } = useScroll({
     })
@@ -31,13 +33,13 @@ const Poster = () => {
 
 
     return (
-        <div className="w-screen h-screen relative overflow-hidden">
+        <div className="w-screen h-full relative overflow-hidden">
             <MovingText
                 text="What we've got for you"
                 scrollYProgress={scrollYProgress}
             />
 
-            <div className="w-full h-full flex justify-center items-center gap-8">
+            <div className="w-full min-h-screen h-full py-5 lg:py-0 flex flex-col lg:flex-row justify-center items-center gap-8">
                 {
                     cardsData.map((card, index) => {
                         return (
