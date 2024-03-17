@@ -23,7 +23,7 @@ const Navbar = () => {
         },
         {
             name: "Professionals",
-            href: "/professionals",
+            href: "/experts",
         },
         {
             name: "About",

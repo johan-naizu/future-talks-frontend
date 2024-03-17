@@ -6,7 +6,7 @@ import BlurNearbyThing from '/public/blurNearbyThing.svg';
 import Filter from '/public/filter.svg';
 import 'font-awesome/css/font-awesome.min.css';
 
-const Courses = () => {
+const Students = () => {
     return (
         <div className="w-screen min-h-screen h-full relative">
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
@@ -17,7 +17,7 @@ const Courses = () => {
                         <Image src={BlurNearbyThing} alt="blur1-nearby-thing" width={50} className="absolute -top-1 -right-1 w-4 md:-top-2 md:-right-2 md:w-8" />
                     </div>
 
-                    <h1 className="text-4xl md:text-[8rem] text-center font-bold italic">Courses</h1>
+                    <h1 className="text-4xl md:text-[8rem] text-center font-bold italic">Students</h1>
 
                     <div className="relative self-end">
                         <Image src={Blur} alt="blur1" width={100} className="w-8 md:w-16" />
@@ -40,4 +40,4 @@ const Courses = () => {
     )
 }
 
-export default Courses;
+export default Students;
