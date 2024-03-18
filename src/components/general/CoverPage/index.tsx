@@ -29,7 +29,7 @@ const CoverPage = ({
                 </div>
             </div>
 
-            <div className="border border-primarycolor mt-16 md:mt-0 md:absolute w-1/2 md:w-96 py-1 px-2 rounded-md bottom-0 left-12 bg-white flex items-center justify-center">
+            <div className="border border-primarycolor mt-16 md:mt-0 lg:absolute w-1/2 md:w-96 py-1 px-2 rounded-md bottom-0 left-48 bg-white flex items-center justify-center">
                 <input
                     className="border-0 font-[FontAwesome] p-1 px-2 rounded-md w-full h-full bg-transparent text-primarycolor focus:outline-none"
                     placeholder="&#xF002; Search ..."

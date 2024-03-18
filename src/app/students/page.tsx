@@ -15,13 +15,13 @@ const Students = () => {
             <CoverPage
                 title="Students"
             />
-            <div className={`w-full h-full mt-16 grid grid-cols-2 gap-x-16 gap-y-32 py-16 px-36 ${sourceCodePro.className}`}>
+            <div className={`w-full h-full mt-16 p-4 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-16 lg:gap-y-8 xl:gap-y-32 lg:py-16 lg:px-2 xl:px-24 2xl:px-36 ${sourceCodePro.className}`}>
                 <Card
                     name="John Doe"
                     course="B.Tech in Electrical and Electronics"
                     remarks="Please add your content here. Keep it short and simple. And smile :)"
                     contact="+91 23456789"
-                    email="john@doe.com"
+                    email="john@doedfdfddfdfdf.com"
                 />
 
                 <Card
