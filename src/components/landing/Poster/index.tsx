@@ -24,8 +24,8 @@ const Poster = () => {
             image: "/imagePlaceholder.svg",
         },
         {
-            title: "Professionals",
-            description: "Get in touch with working professionals",
+            title: "Experts",
+            description: "Get in touch with working experts",
             link: "#",
             image: "/imagePlaceholder.svg",
         }

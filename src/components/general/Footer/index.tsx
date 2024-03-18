@@ -1,11 +1,18 @@
+"use client"
+
 //TODO: font Neue Regrade
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
-import { subjectivity } from "@/fonts";
+import { neueRegrade, subjectivity } from "@/fonts";
 import Link from "next/link";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 const Footer = () => {
+    const [hover, setHover] = useState(false);
+    const router = useRouter();
     const links = useMemo(() => [
         {
             name: "HOME",
@@ -17,7 +24,7 @@ const Footer = () => {
         },
         {
             name: "ABOUT US",
-            href: "/about",
+            href: "/about", //TODO: change back to /about when the page is created
         },
         {
             name: "STUDENTS",
@@ -28,8 +35,8 @@ const Footer = () => {
             href: "/contact",
         },
         {
-            name: "PROFESSIONALS",
-            href: "/professionals",
+            name: "EXPERTS",
+            href: "/experts",
         }
     ], []);
 
@@ -37,7 +44,7 @@ const Footer = () => {
         {
             name: "instagram",
             icon: faInstagram,
-            href: "https://www.instagram.com/",
+            href: "https://www.instagram.com/_future.talks?igsh=MTJsY2s3aWx3M3VpaA==",
         },
         {
             name: "linkedin",
@@ -63,10 +70,40 @@ const Footer = () => {
             <div className={`col-start-1 col-span-4 row-start-1 row-span-3 p-2 text-xl sm:text-3xl xl:text-6xl flex items-center justify-center text-center border border-0 border-b-2 ${subjectivity.className}`}>
                 JOIN US ON THE ROAD TO SUCCESS
             </div>
-            <div className="col-start-1 col-span-2 row-start-4 row-span-4 p-2 border border-0 border-b-2 border-e-2">
-                <div className="overflow-hidden w-full lg:w-1/2  p-2 ">
+            <div className="col-start-1 col-span-2 row-start-4 row-span-4 p-2 border border-0 border-b-2 border-e-2 relative">
+                <div className="overflow-hidden w-full lg:w-1/2 p-2">
                     Do you want to know which college to join or which course to pursue? <br /> Get in touch with us!
                 </div>
+
+                <button
+                    className={`bg-white text-${hover ? 'white' : 'primarycolor'} ps-4 absolute bottom-4 left-4 font-bold flex items-center justify-center gap-4 z-0 ${neueRegrade.className}`}
+                    onMouseEnter={() => setHover(true)}
+                    onMouseLeave={() => setHover(false)}
+                    onClick={() => router.push("/")}
+                >
+                    <span className="z-10">
+                        Apply now
+                    </span>
+                    <div className={`relative text-white z-10 p-2 flex`}>
+                        <FontAwesomeIcon icon={faArrowRight} width={10} />
+                        {
+                            !hover && (
+                                <motion.span
+                                    layoutId="arrow-bottom"
+                                    className="bg-primarycolor/90 absolute top-0 left-0 w-full h-full -z-10"
+                                />
+                            )
+                        }
+                    </div>
+                    {
+                        hover && (
+                            <motion.span
+                                layoutId="arrow-bottom"
+                                className="bg-primarycolor/90 absolute top-0 left-0 w-full h-full z-1"
+                            />
+                        )
+                    }
+                </button>
             </div>
 
             {

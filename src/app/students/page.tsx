@@ -54,9 +54,7 @@ const Students = () => {
                     contact="+91 23456789"
                     email="john@doe.com"
                 />
-
             </div>
-
         </div>
     )
 }

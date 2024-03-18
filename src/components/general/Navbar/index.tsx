@@ -22,16 +22,16 @@ const Navbar = () => {
             href: "/students",
         },
         {
-            name: "Professionals",
+            name: "Experts",
             href: "/experts",
         },
         {
             name: "About",
-            href: "/about",
+            href: "/#", //TODO: change back to /about when the page is created
         },
         {
             name: "Apply",
-            href: "/apply",
+            href: "/#", //TODO: change back to /apply when the page is created
         }
     ], []);
 
