@@ -38,3 +38,8 @@ textarea {
   border-radius: 1rem;
   margin: 0.5rem 0;
 }
+
+*::selection {
+  background-color: #47706B;
+  color: #fff;
+}

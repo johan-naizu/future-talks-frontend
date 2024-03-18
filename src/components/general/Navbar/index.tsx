@@ -46,7 +46,7 @@ const Navbar = () => {
                     <span className="text-white hidden md:block"> Future Talks </span>
                     <span className="w-1/3 border hidden md:block" />
                     <div className="block md:hidden flex items-center justify-center overflow-hidden">
-                        <div className="z-10">
+                        <div className="z-[1000000000]">
                             <Hamburger toggled={open} toggle={setOpen} color="white" />
                         </div>
                         {
@@ -67,15 +67,12 @@ const Navbar = () => {
                                 key={index}
                                 href={item.href}
                                 className={`relative p-1 px-2 text-primarycolor font-medium text-sm xl:text-md ${item.name === "Apply" ? "bg-primarycolor text-white px-4 py-2 rounded-full" : ""}`}
-                                style={{
-                                    color: item.href === pathname || item.name === "Apply" ? "#fff" : "#47706B"
-                                }}
                             >
                                 {
                                     item.href === pathname && item.name !== "Apply" && (
                                         <motion.span
                                             layoutId="nav-item-bottom"
-                                            className="absolute left-0 top-0 w-full h-full rounded-sm bg-primarycolor -z-10"
+                                            className="absolute left-1/4 bottom-0 w-1/2 p-[0.1rem] rounded-sm bg-primarycolor -z-10"
                                         />
                                     )
                                 }
@@ -91,7 +88,7 @@ const Navbar = () => {
                 {
                     open && (
                         <motion.div
-                            className="w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl absolute top-0 right-0 h-1/2"
+                            className="z-[1] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl absolute top-0 right-0 h-1/2"
                             layoutId="circle"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}

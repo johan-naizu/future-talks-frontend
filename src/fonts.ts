@@ -1,4 +1,4 @@
-import { Inter, Poppins } from "next/font/google";
+import { Inter, Poppins, Source_Code_Pro } from "next/font/google";
 import localFont from 'next/font/local';
 
 export const inter = Inter({ subsets: ["latin"] });
@@ -14,4 +14,9 @@ export const neueRegrade = localFont({
     src: "../fonts/NeueRegrade/Neue Regrade Variable.ttf",
     display: "swap",
     variable: "--font-neue-regrade",
+})
+
+export const sourceCodePro = Source_Code_Pro({
+    subsets: ['latin'],
+    weight: ['400', '500', '600', '700'],
 })
