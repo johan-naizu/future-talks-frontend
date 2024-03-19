@@ -3,7 +3,7 @@ import grid from "/public/Gride.svg";
 import contactImage from '/public/contactImage.svg';
 import { neueRegrade } from "@/fonts";
 import send from '/public/send.svg';
-import { FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState } from "react";
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -12,7 +12,7 @@ const Contact = () => {
     })
 
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -25,7 +25,8 @@ const Contact = () => {
     }
 
     return (
-        <div className="w-screen min-h-screen h-full flex flex-col relative overflow-hidden">
+        <div className="w-screen min-h-screen h-full
+         flex flex-col relative overflow-hidden">
             <Image
                 src={grid}
                 className="absolute w-full h-full top-0 left-0 -z-10 object-cover"
@@ -37,7 +38,7 @@ const Contact = () => {
             <h1 className={`w-full font-extrabold text-2xl text-primarycolor text-center p-16 ${neueRegrade.className}`}> Get in touch </h1>
 
             <div className="w-full h-full flex mb-8">
-                <div className="w-full h-full flex items-center justify-center absolute -top-16 -right-32 sm:-right-32 sm:-top-32 sm:-right-64 -z-10 opacity-70 lg:static lg:z-10">
+                <div className="w-full h-full hidden lg:flex items-center justify-center z-10">
                     <Image
                         src={contactImage}
                         alt="contactImage"
@@ -45,7 +46,7 @@ const Contact = () => {
                         height={500}
                     />
                 </div>
-                <div className="w-full h-full flex items-center justify-center">
+                <div className="w-full h-full flex items-center justify-center p-2">
                     <form className="shadow-xl rounded-xl bg-[#79BCB8] p-8 md:w-2/3" onSubmit={handleSubmit}>
                         <div className="flex flex-col">
                             <label htmlFor="name">Name</label>

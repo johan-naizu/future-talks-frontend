@@ -13,10 +13,10 @@ const Navbar = () => {
             name: "Home",
             href: "/",
         },
-        {
-            name: "Courses",
-            href: "/courses",
-        },
+        // {
+        //     name: "Courses",
+        //     href: "/courses",
+        // },
         {
             name: "Students",
             href: "/students",
@@ -88,7 +88,7 @@ const Navbar = () => {
                 {
                     open && (
                         <motion.div
-                            className="z-[1] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl absolute top-0 right-0 h-1/2"
+                            className="z-[1] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl fixed top-10 right-0 h-[50dvh]"
                             layoutId="circle"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
@@ -99,7 +99,7 @@ const Navbar = () => {
                                     <Link
                                         key={index}
                                         href={item.href}
-                                        className={`relative p-2 px-32 w-full text-center text-white font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${item.href === pathname ? "bg-neutral-800 text-white" : ""}`}
+                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center text-white font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${item.href === pathname ? "bg-neutral-800 text-white" : ""}`}
                                         onClick={() => setOpen(false)}
                                     >
                                         {item.name}

@@ -8,8 +8,9 @@ import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { neueRegrade, subjectivity } from "@/fonts";
 import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRouter } from "next/navigation";
+import MovingText from "./MovingText";
 const Footer = () => {
     const [hover, setHover] = useState(false);
     const router = useRouter();
@@ -65,10 +66,16 @@ const Footer = () => {
 
     ], [])
 
+    // const { scrollYProgress } = useScroll();
+    // const progress = useTransform(scrollYProgress, [0, 1], [15, 0]);
     return (
-        <footer className="grid grid-rows-8 grid-cols-4 bg-primarycolor h-96 w-screen text-white text-[0.75rem]">
+        <footer className="grid grid-rows-8 grid-cols-4 bg-primarycolor h-96 w-screen text-white text-[0.75rem] overflow-hidden">
             <div className={`col-start-1 col-span-4 row-start-1 row-span-3 p-2 text-xl sm:text-3xl xl:text-6xl flex items-center justify-center text-center border border-0 border-b-2 ${subjectivity.className}`}>
                 JOIN US ON THE ROAD TO SUCCESS
+                {/* <MovingText
+                    text={`JOIN US ON THE ROAD TO SUCCESS \t JOIN US ON THE ROAD TO SUCCESS`}
+                    scrollYProgress={progress}
+                /> */}
             </div>
             <div className="col-start-1 col-span-2 row-start-4 row-span-4 p-2 border border-0 border-b-2 border-e-2 relative">
                 <div className="overflow-hidden w-full lg:w-1/2 p-2">

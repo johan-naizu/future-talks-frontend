@@ -11,9 +11,9 @@ const MovingText = ({
     const textArray = text.split(" ");
     return (
         <>
-            <div className="bg-white w-[200dvw] h-16 border border-0 border-b-2 border-t-2 border-black flex justify-center items-center hidden lg:block">
+            <div className="w-full h-16 flex justify-center items-center hidden lg:block">
                 <motion.div
-                    className={"text-primarycolor w-full font-medium h-full lg:tracking-[2rem] text-lg lg:text-4xl text-center flex justify-center items-center gap-32   " + poppins.className}
+                    className={"text-white w-full font-bold h-full lg:tracking-[2rem] text-lg lg:text-4xl text-center flex justify-center items-center gap-10 " + poppins.className}
                     style={{
                         x
                     }}
@@ -29,7 +29,7 @@ const MovingText = ({
                     }
                 </motion.div>
             </div >
-            <div className="bg-white w-full tracking-[0.5rem] h-16 border border-0 border-b-2 border-t-2 border-black flex justify-center items-center lg:hidden">
+            <div className="w-full tracking-[0.5rem] h-16 flex justify-center items-center lg:hidden">
                 <div className={"text-primarycolor w-full font-medium text-lg text-center flex justify-between items-center " + poppins.className}>
                     {
                         textArray.map((word, index) => (
