@@ -16,6 +16,7 @@ const Experts = () => {
 
             <div className={`w-full h-full mt-16 p-4 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-16 lg:gap-y-8 xl:gap-y-32 lg:py-16 lg:px-2 xl:px-24 2xl:px-36 ${sourceCodePro.className}`}>
                 <Card
+                    id={1}
                     name="John Doe"
                     course="B.Tech in Electrical and Electronics"
                     remarks="Please add your content here. Keep it short and simple. And smile :)"
@@ -24,6 +25,7 @@ const Experts = () => {
                 />
 
                 <Card
+                    id={2}
                     name="John Doe"
                     course="BSIT"
                     remarks="Good"
@@ -31,6 +33,7 @@ const Experts = () => {
                     email="john@doe.com"
                 />
                 <Card
+                    id={3}
                     name="John Doe"
                     course="BSIT"
                     remarks="Good"
@@ -39,6 +42,7 @@ const Experts = () => {
                 />
 
                 <Card
+                    id={4}
                     name="John Doe"
                     course="BSIT"
                     remarks="Good"
@@ -47,6 +51,7 @@ const Experts = () => {
                 />
 
                 <Card
+                    id={5}
                     name="John Doe"
                     course="BSIT"
                     remarks="Good"
