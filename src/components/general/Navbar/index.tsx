@@ -99,7 +99,7 @@ const Navbar = () => {
                                     <Link
                                         key={index}
                                         href={item.href}
-                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center text-white font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${item.href === pathname ? "bg-neutral-800 text-white" : ""}`}
+                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center text-white font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${item.href === pathname ? "bg-white text-[#47706B]" : ""}`}
                                         onClick={() => setOpen(false)}
                                     >
                                         {item.name}

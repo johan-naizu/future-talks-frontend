@@ -28,10 +28,10 @@ const Card = ({
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrent((prev) => (prev + 1) % sampleImages.length);
-        }, 3000);
+        }, 5000);
         return () => clearInterval(interval);
 
-    }, []);
+    }, [sampleImages.length]);
 
     return (
         <>
@@ -101,10 +101,10 @@ const Card = ({
                             layoutId={`student-card-${id}`}
                         >
 
-                            <span className="hidden lg:inline bg-transparent absolute top-2 right-2 rounded-lg lg:top-8 lg:right-8 z-[10000000000]">
+                            <span className="bg-black lg:bg-transparent absolute top-2 right-2 rounded-full lg:top-8 lg:right-8 z-[10000000000]">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
-                                    className="h-8 w-8 text-black cursor-pointer"
+                                    className="h-8 w-8 text-white lg:text-black p-2 lg:p-1 cursor-pointer"
                                     fill="none"
                                     viewBox="0 0 24 24"
                                     stroke="currentColor"
@@ -119,7 +119,7 @@ const Card = ({
                                 </svg>
                             </span>
                             <div className={"w-full bg-white h-full lg:h-96 rounded-3xl font-inherit flex flex-col overflow-hidden lg:flex-row relative gap-8"}>
-                                <div className="h-1/3 lg:h-full lg:w-1/3 rounded-s-3xl relative overflow-hidden">
+                                <div className="h-1/3 lg:h-full lg:w-1/3 relative overflow-hidden">
                                     {/* <Image 
                                     className="w-full h-full object-cover"
                                     src={profile}
@@ -129,12 +129,16 @@ const Card = ({
                                         <motion.img
                                             className="w-full h-full object-cover"
                                             src={sampleImages[current]}
-                                            layoutId={`student-card-${id}-image`}
+                                            // layoutId={`student-card-${id}-image`}
                                             alt="profile"
                                             key={current}
-                                            initial={{ position: "absolute", x: "-100%" }}
+                                            initial={{ position: "absolute", x: "100%" }}
                                             animate={{ position: "relative", x: "0%" }}
-                                            exit={{ position: "absolute", x: "100%" }}
+                                            exit={{ position: "absolute", x: "-100%" }}
+                                            transition={{
+                                                duration: 0.5,
+                                                type: "tween",
+                                            }}
                                         />
                                     </AnimatePresence>
                                 </div>
