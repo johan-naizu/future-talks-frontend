@@ -7,8 +7,10 @@ import Filter from '/public/filter.svg';
 import 'font-awesome/css/font-awesome.min.css';
 import CoverPage from "@/components/general/CoverPage";
 import Card from "@/components/students/Card";
+import { getAllStudents } from "@/lib/students";
 
-const Students = () => {
+const Students = async () => {
+    const students = await getAllStudents();
     return (
         <div className="w-sreen min-h-screen h-full relative">
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
@@ -16,50 +18,17 @@ const Students = () => {
                 title="Students"
             />
             <div className={`w-full h-full mt-16 p-4 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-16 lg:gap-y-8 xl:gap-y-32 lg:py-16 lg:px-2 xl:px-24 2xl:px-36 ${sourceCodePro.className}`}>
-                <Card
-                    id={1}
-                    name="John Doe"
-                    course="B.Tech in Electrical and Electronics"
-                    remarks="Please add your content here. Keep it short and simple. And smile :)"
-                    contact="+91 23456789"
-                    email="john@doedfdfddfdfdf.com"
-                />
+                {
+                    students?.data.map(student => {
+                        return (
+                            <Card
+                                key={student.id}
+                                {...student}
+                            />
+                        )
 
-                <Card
-                    id={2}
-                    name="John Doe"
-                    course="BSIT"
-                    remarks="Good"
-                    contact="+91 23456789"
-                    email="john@doe.com"
-                />
-                <Card
-                    id={3}
-                    name="John Doe"
-                    course="BSIT"
-                    remarks="Good"
-                    contact="+91 23456789"
-                    email="john@doe.com"
-                />
-
-                <Card
-                    id={4}
-                    name="John Doe"
-                    course="BSIT"
-                    remarks="Good"
-                    contact="+91 23456789"
-                    email="john@doe.com"
-                />
-
-                <Card
-
-                    id={5}
-                    name="John Doe"
-                    course="BSIT"
-                    remarks="Good"
-                    contact="+91 23456789"
-                    email="john@doe.com"
-                />
+                    })
+                }
             </div>
         </div>
     )

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import MovingText from "./MovingText";
 import checkeredBg from '/public/Gride.svg';

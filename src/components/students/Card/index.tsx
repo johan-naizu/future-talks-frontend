@@ -5,19 +5,8 @@ import { useEffect, useState } from "react";
 
 const Card = ({
     id,
-    name,
-    course,
-    remarks,
-    contact,
-    email,
-}: {
-    id: number,
-    name: string,
-    course: string,
-    remarks: string,
-    contact: string,
-    email: string,
-}) => {
+    attributes,
+}: Student | Professional) => {
     const [show, setShow] = useState(false);
     const [current, setCurrent] = useState(0);
     const sampleImages = [
@@ -54,8 +43,8 @@ const Card = ({
                             <motion.div
                                 className="flex flex-col w-full"
                                 layoutId={`student-card-${id}-header`}>
-                                <span className="font-medium text-lg">{name}</span>
-                                <span className="font-regular text-neutral-500">{course}</span>
+                                <span className="font-medium text-lg">{attributes.name}</span>
+                                <span className="font-regular text-neutral-500">{attributes.courses?.data[0].attributes.name || "N/A"}</span>
                             </motion.div>
                         </div>
                         <motion.div
@@ -63,7 +52,7 @@ const Card = ({
                             layoutId={`student-card-${id}-content`}
                         >
                             <span className="font-medium text-lg">Remarks</span>
-                            <span className="font-regular text-neutral-500 h-20 overflow-hidden text-ellipsis">{remarks}</span>
+                            <span className="font-regular text-neutral-500 h-20 overflow-hidden text-ellipsis">{attributes.remarks}</span>
                         </motion.div>
 
                         <motion.div
@@ -72,17 +61,17 @@ const Card = ({
                         >
                             <div className="w-full lg:w-5/12 xl:w-1/3 text-xs">
                                 <Button
-                                    text={contact}
+                                    text={`+91 ${attributes.phoneNumber}` || "No contact"}
                                     rounded
                                     invert
-                                    href={`tel:${contact}`}
+                                    href={`tel:+91 ${attributes.phoneNumber}`}
                                 />
                             </div>
                             <div className="w-full lg:w-7/12 xl:w-2/3 text-xs">
                                 <Button
-                                    text={email}
+                                    text={attributes.email || "No email"}
                                     rounded
-                                    href={`mailto:${email}`}
+                                    href={`mailto:${attributes.email}`}
                                 />
                             </div>
                         </motion.div>
@@ -142,42 +131,42 @@ const Card = ({
                                         />
                                     </AnimatePresence>
                                 </div>
-                                <div className="w-full relative p-8">
+                                <div className="w-full relative p-8 h-full">
                                     <motion.div
                                         className="flex w-full flex-col"
                                         layoutId={`student-card-${id}-header`}
                                     >
-                                        <span className="font-medium text-lg">{name}</span>
-                                        <span className="font-regular text-neutral-500">{course}</span>
+                                        <span className="font-medium text-lg">{attributes.name}</span>
+                                        <span className="font-regular text-neutral-500">{attributes.courses?.data[0].attributes.name || "N/A"}</span>
                                     </motion.div>
 
                                     <hr className="text-white" />
 
                                     <motion.div
-                                        className="flex flex-col w-full mt-8 h-36"
+                                        className="flex flex-col w-full mt-8 h-1/2 outline lg:h-36"
                                         layoutId={`student-card-${id}-content`}
                                     >
                                         <span className="font-medium text-lg">Remarks</span>
-                                        <span className="font-regular text-neutral-500 h-20 overflow-hidden text-ellipsis">{remarks}</span>
+                                        <span className="font-regular text-neutral-500 h-full overflow-hidden text-ellipsis">{attributes.remarks}</span>
                                     </motion.div>
 
                                     <motion.div
-                                        className="w-full mt-4 lg:mt-0 lg:absolute left-0 bottom-8 flex flex-col lg:flex-row lg:px-8 gap-4"
+                                        className="px-8 w-full mt-4 lg:mt-0 absolute left-0 bottom-8 flex flex-col lg:flex-row lg:px-8 gap-4"
                                         layoutId={`student-card-${id}-footer`}
                                     >
                                         <div className="w-full lg:w-5/12 xl:w-1/3 text-xs">
                                             <Button
-                                                text={contact}
+                                                text={`+91 ${attributes.phoneNumber}` || "No contact"}
                                                 rounded
                                                 invert
-                                                href={`tel:${contact}`}
+                                                href={`tel:+91 ${attributes.phoneNumber}`}
                                             />
                                         </div>
                                         <div className="w-full lg:w-7/12 xl:w-2/3 text-xs">
                                             <Button
-                                                text={email}
+                                                text={attributes.email || "No email"}
                                                 rounded
-                                                href={`mailto:${email}`}
+                                                href={`mailto:${attributes.email}`}
                                             />
                                         </div>
                                     </motion.div>
