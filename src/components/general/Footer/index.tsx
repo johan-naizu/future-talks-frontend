@@ -72,8 +72,8 @@ const Footer = () => {
     return (
         <footer className="grid grid-rows-8 grid-cols-4 bg-primarycolor h-96 w-screen text-white text-[0.75rem] overflow-hidden">
             <div className={`col-start-1 col-span-4 row-start-1 row-span-3 p-2 text-xl sm:text-3xl xl:text-6xl flex items-center justify-center text-center border border-0 border-b-2 ${subjectivity.className}`}>
-                <span className="hidden lg:inline w-full">
-                    <Marquee>
+                <span className="hidden lg:inline w-full 2xl:text-[5rem]">
+                    <Marquee speed={150}>
                         JOIN US ON THE ROAD TO SUCCESS
                     </Marquee>
                 </span>

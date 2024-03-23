@@ -58,6 +58,7 @@ const Card = ({
                         <motion.div
                             className="w-full mt-4 lg:mt-0 lg:absolute left-0 bottom-8 flex flex-col lg:flex-row lg:px-8 gap-4"
                             layoutId={`student-card-${id}-footer`}
+                            onClick={(e) => e.stopPropagation()}
                         >
                             <div className="w-full lg:w-5/12 xl:w-1/3 text-xs">
                                 <Button
@@ -143,7 +144,7 @@ const Card = ({
                                     <hr className="text-white" />
 
                                     <motion.div
-                                        className="flex flex-col w-full mt-8 h-1/2 outline lg:h-36"
+                                        className="flex flex-col w-full mt-8 h-1/2 lg:h-36"
                                         layoutId={`student-card-${id}-content`}
                                     >
                                         <span className="font-medium text-lg">Remarks</span>
@@ -153,8 +154,10 @@ const Card = ({
                                     <motion.div
                                         className="px-8 w-full mt-4 lg:mt-0 absolute left-0 bottom-8 flex flex-col lg:flex-row lg:px-8 gap-4"
                                         layoutId={`student-card-${id}-footer`}
+                                        onClick={(e) => e.stopPropagation()}
                                     >
-                                        <div className="w-full lg:w-5/12 xl:w-1/3 text-xs">
+                                        <div className="w-full lg:w-5/12 xl:w-1/3 text-xs"
+                                        >
                                             <Button
                                                 text={`+91 ${attributes.phoneNumber}` || "No contact"}
                                                 rounded
@@ -162,7 +165,8 @@ const Card = ({
                                                 href={`tel:+91 ${attributes.phoneNumber}`}
                                             />
                                         </div>
-                                        <div className="w-full lg:w-7/12 xl:w-2/3 text-xs">
+                                        <div className="w-full lg:w-7/12 xl:w-2/3 text-xs"
+                                        >
                                             <Button
                                                 text={attributes.email || "No email"}
                                                 rounded
