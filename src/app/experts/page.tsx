@@ -14,7 +14,6 @@ import { getAllCourses } from '@/lib/course';
 
 
 const Experts = () => {
-    // const experts = await getAllExperts();
     const [experts, setExperts] = useState<{ data: Professional[] } | undefined>(undefined);
     const [courses, setCourses] = useState<{
         label: string,
