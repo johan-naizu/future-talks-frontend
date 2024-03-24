@@ -65,13 +65,13 @@ const CoverPage = ({
                         {
                             openFilter && (
                                 <motion.div
-                                    className="absolute bg-primarycolor rounded-md p-2 h-12 w-36 top-16 -right-32 flex items-center"
+                                    className="absolute bg-primarycolor rounded-md p-2 h-12 w-48 lg:w-96 top-16 -right-0 -left-none flex items-center"
                                     initial={{ opacity: 0, height: "0%", overflow: "hidden" }}
                                     animate={{ opacity: [0, 0.4, 1], height: ["0%", "100%"], overflow: "visible" }}
                                     exit={{ opacity: 0, height: "0%", overflow: "hidden" }}
                                 >
                                     <motion.span
-                                        className="absolute bg-primarycolor p-2 h-4 w-4 -top-4"
+                                        className="absolute bg-primarycolor p-2 h-4 w-4 -top-4 right-2"
                                         style={{
                                             clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)"
                                         }}

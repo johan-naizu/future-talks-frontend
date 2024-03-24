@@ -17,19 +17,19 @@ const Poster = () => {
             title: "Courses",
             description: "Numerous courses offered at renowned universities",
             link: "#",
-            image: "/imagePlaceholder.svg",
+            image: "/courses--poster.png",
         },
         {
             title: "Students",
             description: "Get in touch with students from around the world",
             link: "#",
-            image: "/imagePlaceholder.svg",
+            image: "/students--poster.png",
         },
         {
             title: "Experts",
             description: "Get in touch with working experts",
             link: "#",
-            image: "/imagePlaceholder.svg",
+            image: "/professionals--poster.png",
         }
     ]
 

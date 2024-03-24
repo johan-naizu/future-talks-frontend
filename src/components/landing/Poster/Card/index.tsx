@@ -20,10 +20,10 @@ const Card = ({
         <motion.div
             className="w-80 h-96 rounded-xl bg-white shadow-2xl p-2"
         >
-            <div className="w-full h-1/2 rounded-xl bg-neutral-300 flex items-center justify-center">
+            <div className="w-full h-1/2 rounded-xl bg-neutral-300 flex items-center justify-center  overflow-hidden">
                 <Image
-                    src={imagePlaceholder}
-                    className="object-cover object-center rounded-xl bg-neutral-200"
+                    src={image}
+                    className="object-cover object-center rounded-xl bg-neutral-200 w-full"
                     alt="bg"
                     height={75}
                     width={75}
