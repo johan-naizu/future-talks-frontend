@@ -9,18 +9,16 @@ const Card = ({
 }: Student | Professional) => {
     const [show, setShow] = useState(false);
     const [current, setCurrent] = useState(0);
-    const sampleImages = [
-        "/sampleProfile.jpeg",
-        "/sampleProfile.jpeg",
-    ];
+    const [images, setImages] = useState<string[]>([]);
 
     useEffect(() => {
+        setImages(attributes.pfp.data.map((image) => `${process.env.NEXT_PUBLIC_BACKEND_URL}${image.attributes.url}`));
         const interval = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % sampleImages.length);
+            setCurrent(prev => (prev + 1) % images.length);
         }, 5000);
         return () => clearInterval(interval);
-
-    }, [sampleImages.length]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [images.length]);
 
     return (
         <>
@@ -31,14 +29,17 @@ const Card = ({
                         layoutId={`student-card-${id}`}
                         onClick={() => setShow(true)}
                     >
-                        <div className="flex w-full gap-4">
+                        <div className="flex w-full gap-4 items-center">
                             <motion.img
-                                src="/sampleProfile.jpeg"
+                                src={images[0]}
                                 alt="profile"
                                 layoutId={`student-card-${id}-image`}
-                                className="object-cover rounded-full"
-                                width={50}
-                                height={50}
+                                className="object-cover rounded-full w-12 h-12 outline"
+                                style={{
+                                    clipPath: 'circle(50% at 50% 50%)',
+                                }}
+                                width={100}
+                                height={100}
                             />
                             <motion.div
                                 className="flex flex-col w-full"
@@ -60,7 +61,7 @@ const Card = ({
                             layoutId={`student-card-${id}-footer`}
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <div className="w-full lg:w-5/12 xl:w-1/3 text-xs">
+                            <div className="w-full lg:w-5/12 xl:w-1/3 text-[0.7rem]">
                                 <Button
                                     text={`+91 ${attributes.phoneNumber}` || "No contact"}
                                     rounded
@@ -68,7 +69,7 @@ const Card = ({
                                     href={`tel:+91 ${attributes.phoneNumber}`}
                                 />
                             </div>
-                            <div className="w-full lg:w-7/12 xl:w-2/3 text-xs">
+                            <div className="w-full lg:w-7/12 xl:w-2/3 text-[0.7rem]">
                                 <Button
                                     text={attributes.email || "No email"}
                                     rounded
@@ -110,15 +111,10 @@ const Card = ({
                             </span>
                             <div className={"w-full bg-white h-full lg:h-96 rounded-3xl font-inherit flex flex-col overflow-hidden lg:flex-row relative gap-8"}>
                                 <div className="h-1/3 lg:h-full lg:w-1/3 relative overflow-hidden">
-                                    {/* <Image 
-                                    className="w-full h-full object-cover"
-                                    src={profile}
-                                    alt="profile"
-                                /> */}
                                     <AnimatePresence>
                                         <motion.img
                                             className="w-full h-full object-cover"
-                                            src={sampleImages[current]}
+                                            src={images[current]}
                                             // layoutId={`student-card-${id}-image`}
                                             alt="profile"
                                             key={current}
@@ -132,7 +128,7 @@ const Card = ({
                                         />
                                     </AnimatePresence>
                                 </div>
-                                <div className="w-full relative p-8 h-full">
+                                <div className="w-full relative p-8 h-2/3 lg:h-full">
                                     <motion.div
                                         className="flex w-full flex-col"
                                         layoutId={`student-card-${id}-header`}
@@ -148,7 +144,7 @@ const Card = ({
                                         layoutId={`student-card-${id}-content`}
                                     >
                                         <span className="font-medium text-lg">Remarks</span>
-                                        <span className="font-regular text-neutral-500 h-full overflow-hidden text-ellipsis">{attributes.remarks}</span>
+                                        <span className="font-regular text-neutral-500 h-full overflow-scroll">{attributes.remarks}</span>
                                     </motion.div>
 
                                     <motion.div

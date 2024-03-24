@@ -20,14 +20,11 @@ interface University {
 interface CourseAttributes {
     name: string,
     graduationType: string,
-    specialisation: string,
+    // specialisation: string,
+    courseType: CourseType,
     description: string,
     logo?: {
-        data: {
-            attributes: {
-                url: string,
-            }
-        }
+        data: Picture,
     }
 }
 
@@ -41,6 +38,16 @@ enum GraduationType {
     "PHD",
 }
 
+enum CourseType {
+    "BTech",
+    "Bsc",
+    "BA",
+    "MTech",
+    "MS",
+    "MBA",
+    "BPT",
+    "MPT",
+}
 
 
 
@@ -50,7 +57,9 @@ interface ProfessionalAttributes {
         data: Course[]
     },
     job?: string,
-    pfp: any,
+    pfp: {
+        data: Picture[],
+    },
     remarks: string,
     phoneNumber: string,
     email: string,
@@ -64,7 +73,9 @@ interface StudentAttributes {
     universities?: {
         data: University[]
     },
-    pfp: any,
+    pfp: {
+        data: Picture[],
+    }
     remarks: string,
     phoneNumber: string,
     email: string,
@@ -76,4 +87,12 @@ interface UniversityAttributes {
     location: string,
     address: string,
     remarks: string,
+}
+
+
+interface Picture {
+    id: string,
+    attributes: {
+        url: string,
+    }
 }

@@ -1,18 +1,38 @@
+"use client";
+
 import { neueRegrade } from "@/fonts";
 import Image from 'next/image';
-import Grid from '/public/Gride.svg';
+import { AnimatePresence, motion } from 'framer-motion';
 import Blur from '/public/blur.svg';
 import BlurNearbyThing from '/public/blurNearbyThing.svg';
 import Filter from '/public/filter.svg';
 import 'font-awesome/css/font-awesome.min.css';
-
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import Select, { SingleValue } from 'react-select';
 const CoverPage = ({
     title,
-    // state for filtering
+    filterData,
+    selectedFilter,
+    setSelctedFilter
 }: {
     title: string,
-    // state for filtering
+    filterData: {
+        value: string | null,
+        label: string
+    }[],
+    selectedFilter: string | null,
+    setSelctedFilter: Dispatch<SetStateAction<string | null>>
 }) => {
+    const [openFilter, setOpenFilter] = useState(false);
+
+    const handleChange = (newValue: SingleValue<{
+        value: string | null,
+        label: string
+    }>) => {
+        setSelctedFilter(newValue?.value || null)
+    }
+
+
     return (
         <div className={`${neueRegrade.className} pt-24 h-[70dvh] flex flex-col  items-center justify-center relative`}>
             <div className="flex items-center justify-center gap-4 h-18 md:h-36 gap-24 ">
@@ -34,8 +54,68 @@ const CoverPage = ({
                     className="border-0 font-[FontAwesome] p-1 px-2 rounded-md w-full h-full bg-transparent text-primarycolor focus:outline-none"
                     placeholder="&#xF002; Search ..."
                 />
-                <div className="h-12 rounded-md flex items-center justify-center">
-                    <Image src={Filter} alt="filter" width={50} />
+                <div className="h-12 rounded-md flex items-center justify-center relative">
+                    <Image
+                        src={Filter}
+                        alt="filter"
+                        width={50}
+                        onClick={() => setOpenFilter(!openFilter)}
+                    />
+                    <AnimatePresence>
+                        {
+                            openFilter && (
+                                <motion.div
+                                    className="absolute bg-primarycolor rounded-md p-2 h-12 w-36 top-16 -right-32 flex items-center"
+                                    initial={{ opacity: 0, height: "0%", overflow: "hidden" }}
+                                    animate={{ opacity: [0, 0.4, 1], height: ["0%", "100%"], overflow: "visible" }}
+                                    exit={{ opacity: 0, height: "0%", overflow: "hidden" }}
+                                >
+                                    <motion.span
+                                        className="absolute bg-primarycolor p-2 h-4 w-4 -top-4"
+                                        style={{
+                                            clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)"
+                                        }}
+                                    />
+                                    <Select
+                                        defaultValue={filterData[0]}
+                                        isSearchable={false}
+                                        options={filterData}
+                                        className="w-full"
+                                        onChange={handleChange}
+                                        styles={{
+                                            control(base) {
+                                                return {
+                                                    ...base,
+                                                    backgroundColor: "#47706B",
+                                                    color: '#fff',
+
+                                                }
+                                            },
+                                            placeholder(base) {
+                                                return {
+                                                    ...base,
+                                                    color: '#fff',
+                                                }
+                                            },
+                                            singleValue(base) {
+                                                return {
+                                                    ...base,
+                                                    color: '#fff',
+                                                }
+                                            },
+                                            input(base) {
+                                                return {
+                                                    ...base,
+                                                    color: '#fff',
+                                                }
+                                            }
+
+                                        }}
+                                    />
+                                </motion.div>
+                            )
+                        }
+                    </AnimatePresence>
                 </div>
             </div>
         </div>
