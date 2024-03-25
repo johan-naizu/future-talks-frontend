@@ -11,10 +11,10 @@ const PageTemplate = ({
 }) => {
     return (
         <motion.div
-            className={className || ""}
-            initial={{ position: 'absolute', y: 25, opacity: 0 }}
-            animate={{ position: 'relative', y: 0, opacity: 1 }}
-            exit={{ position: 'absolute', y: 25, opacity: 0 }}
+            className={`${className || ""} relative`}
+            initial={{ y: 25, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 25, opacity: 0 }}
         >
             {children}
         </motion.div>

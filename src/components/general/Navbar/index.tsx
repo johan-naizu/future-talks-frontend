@@ -31,7 +31,7 @@ const Navbar = () => {
         },
         {
             name: "Apply",
-            href: "/#", //TODO: change back to /apply when the page is created
+            href: "/apply",
         }
     ], []);
 
@@ -99,7 +99,7 @@ const Navbar = () => {
                                     <Link
                                         key={index}
                                         href={item.href}
-                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${item.href === pathname ? "bg-white text-primarycolor" : "text-white   "}`}
+                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${(item.href === pathname && item.name !== "Apply") ? "bg-white text-primarycolor" : "text-white   "}`}
                                         onClick={() => setOpen(false)}
                                     >
                                         {item.name}

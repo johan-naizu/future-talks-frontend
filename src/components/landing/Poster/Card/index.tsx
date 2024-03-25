@@ -25,8 +25,8 @@ const Card = ({
                     src={image}
                     className="object-cover object-center rounded-xl bg-neutral-200 w-full"
                     alt="bg"
-                    height={75}
-                    width={75}
+                    height={1000}
+                    width={1000}
                 />
             </div>
             <div className={`w-full h-1/2 p-2 ${neueRegrade.className}`}>

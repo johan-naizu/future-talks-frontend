@@ -95,3 +95,24 @@ export interface Picture {
         url: string,
     }
 }
+
+export interface ApplicationForm {
+    course?: string,
+    name: string,
+    email: string,
+    dob: string,
+    gender: "Male" | "Female" | "Other",
+    phoneNumber: string,
+    address: {
+        country: string,
+        state: string,
+        district: string,
+        pinCode: string,
+    },
+    qualification: {
+        university: string,
+        marks: string,
+        message: string,
+    }
+
+}
