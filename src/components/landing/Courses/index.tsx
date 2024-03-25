@@ -4,40 +4,6 @@ import { useMemo } from "react";
 import { getAllCourses } from "@/lib/course";
 
 const Courses = async () => {
-
-    // const coursesData = useMemo(() => [
-    //     {
-    //         title: "Design",
-    //         image: "/design.svg",
-    //         link: "#"
-    //     },
-    //     {
-    //         title: "Engineering",
-    //         image: "/engineering.svg",
-    //         link: "#",
-    //     },
-    //     {
-    //         title: "AI and ML",
-    //         image: "/aiandml.svg",
-    //         link: "#",
-    //     },
-    //     {
-    //         title: "Nursing",
-    //         image: "/nursing.svg",
-    //         link: "#",
-    //     },
-    //     {
-    //         title: "Journalism",
-    //         image: "/journalism.svg",
-    //         link: "#",
-    //     },
-    //     {
-    //         title: "Aviation",
-    //         image: "/aviation.svg",
-    //         link: "#",
-    //     }
-    // ], []);
-
     const courses = await getAllCourses();
     console.log(`${process.env.NEXT_PUBLIC_BACKEND_URL}${courses?.data[0].attributes.logo?.data.attributes.url}` || "")
 
@@ -50,7 +16,7 @@ const Courses = async () => {
                         <div key={index} className="w-full h-full flex items-center justify-center px-4 py-2 md:p-0">
                             <Card
                                 title={course.attributes.name}
-                                link={"#"}
+                                link={`/courses/${course.id}`}
                                 image={`${process.env.NEXT_PUBLIC_BACKEND_URL}${course.attributes.logo?.data.attributes.url}` || ""}
                             />
                         </div>

@@ -1,25 +1,25 @@
-interface Course {
+export interface Course {
     id: string,
     attributes: CourseAttributes,
 }
-interface Professional {
+export interface Professional {
     id: string,
     attributes: ProfessionalAttributes,
 }
 
-interface Student {
+export interface Student {
     id: string,
     attributes: StudentAttributes,
 }
 
-interface University {
+export interface University {
     id: string,
     attributes: UniversityAttributes,
 }
 
-interface CourseAttributes {
+export interface CourseAttributes {
     name: string,
-    graduationType: string,
+    graduationType: GraduationType,
     // specialisation: string,
     courseType: CourseType,
     description: string,
@@ -28,30 +28,29 @@ interface CourseAttributes {
     }
 }
 
-enum GraduationType {
-    "Diploma",
-    "Polytechnic",
-    "UG",
-    "PG",
-    "Certified Programs",
-    "M.Phil",
-    "PHD",
-}
+export type GraduationType =
+    "Diploma" |
+    "Polytechnic" |
+    "UG" |
+    "PG" |
+    "Certified Programs" |
+    "M.Phil" |
+    "PHD";
 
-enum CourseType {
-    "BTech",
-    "Bsc",
-    "BA",
-    "MTech",
-    "MS",
-    "MBA",
-    "BPT",
-    "MPT",
-}
+export type CourseType =
+    "BTech" |
+    "Bsc" |
+    "BA" |
+    "MTech" |
+    "MS" |
+    "MBA" |
+    "BPT" |
+    "MPT";
 
 
 
-interface ProfessionalAttributes {
+
+export interface ProfessionalAttributes {
     name: string,
     courses?: {
         data: Course[]
@@ -65,7 +64,7 @@ interface ProfessionalAttributes {
     email: string,
 }
 
-interface StudentAttributes {
+export interface StudentAttributes {
     name: string,
     courses?: {
         data: Course[]
@@ -82,7 +81,7 @@ interface StudentAttributes {
 }
 
 
-interface UniversityAttributes {
+export interface UniversityAttributes {
     name: string,
     location: string,
     address: string,
@@ -90,7 +89,7 @@ interface UniversityAttributes {
 }
 
 
-interface Picture {
+export interface Picture {
     id: string,
     attributes: {
         url: string,

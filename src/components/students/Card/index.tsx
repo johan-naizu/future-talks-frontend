@@ -1,7 +1,9 @@
 "use client";
 import Button from "@/components/general/Button";
+import { Professional, Student } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+
 
 const Card = ({
     id,

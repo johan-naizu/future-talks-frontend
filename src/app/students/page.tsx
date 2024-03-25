@@ -9,6 +9,8 @@ import { sourceCodePro } from "@/fonts";
 import { getAllStudents } from '@/lib/students';
 import { useEffect, useState } from 'react';
 import { getAllCourses } from '@/lib/course';
+import { Student } from '@/types';
+import PageTemplate from '@/components/general/PageTemplate';
 
 
 
@@ -61,7 +63,7 @@ const Students = () => {
     }, [current])
 
     return (
-        <div className="w-screen min-h-screen h-full relative">
+        <PageTemplate className="w-screen min-h-screen h-full relative">
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <CoverPage
                 title="Students"
@@ -83,7 +85,7 @@ const Students = () => {
                 }
             </div>
 
-        </div>
+        </PageTemplate>
     )
 }
 

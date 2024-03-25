@@ -2,6 +2,7 @@ import Button from "@/components/general/Button";
 import Image from "next/image";
 import { poppins } from "@/fonts";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 //Todo: change hover animation
 const Card = ({
@@ -13,6 +14,7 @@ const Card = ({
     link: string,
     image: string,
 }) => {
+    const router = useRouter();
     return (
         <motion.div
             className={"h-full w-full p-10 flex flex-col relative gap-4 shadow-xl bg-white rounded-xl " + poppins.className}
@@ -24,8 +26,7 @@ const Card = ({
             <div className="">
                 <Button
                     text="Learn More"
-                    onClick={() => 1}
-                    href={link}
+                    onClick={() => router.push(link)}
                     invert
                 />
             </div>
