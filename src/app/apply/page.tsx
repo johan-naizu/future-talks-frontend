@@ -70,7 +70,6 @@ const Apply = () => {
     }
 
     const handleSubmit = async () => {
-        console.log(formData);
         if (!validateDate(formData.dob) || !validateEmail(formData.email))
             return toast.error('Invalid Date or Email');
         const response = await submitApplication(formData);

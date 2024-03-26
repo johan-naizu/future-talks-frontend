@@ -1,10 +1,11 @@
+"use client";
+
 import Image from "next/image";
-import imagePlaceholder from '/public/imagePlaceholder.svg';
 import Button from "@/components/general/Button";
 import { motion } from "framer-motion";
 import { neueRegrade } from "@/fonts";
+import { useRouter } from "next/navigation";
 
-//Todo: change hover animation
 const Card = ({
     title,
     description,
@@ -16,6 +17,7 @@ const Card = ({
     link: string,
     image: string
 }) => {
+    const router = useRouter();
     return (
         <motion.div
             className="w-80 h-96 rounded-xl bg-white shadow-2xl p-2"
@@ -38,9 +40,7 @@ const Card = ({
                     <Button
                         text="View Details"
                         rounded
-                        onClick={() => 0}
-                        href={link}
-
+                        onClick={() => router.push(link)}
                     />
                 </div>
             </div>

@@ -5,7 +5,6 @@ import { getAllCourses } from "@/lib/course";
 
 const Courses = async () => {
     const courses = await getAllCourses();
-    console.log(`${process.env.NEXT_PUBLIC_BACKEND_URL}${courses?.data[0].attributes.logo?.data.attributes.url}` || "")
 
     return (
         <div className={`w-screen flex flex-col min-h-screen h-full bg-[#f5f5f5] ${neueRegrade.className}`}>
