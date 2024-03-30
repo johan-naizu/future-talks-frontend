@@ -15,6 +15,7 @@ const Courses = () => {
     const [courses, setCourses] = useState<{
         data: Course[],
     }>({ data: [] });
+    const [searchText, setSearchText] = useState<string>("");
 
     useEffect(() => {
         const getData = async () => {
@@ -36,9 +37,9 @@ const Courses = () => {
             <CoverPage
                 title="Courses"
                 filterData={[]}
-                selectedFilter={null}
                 setSelctedFilter={() => { }}
-
+                searchText={searchText}
+                setSearchText={setSearchText}
             />
 
             <div className={`w-full h-full mt-16 p-4 flex flex-col gap-4 lg:grid lg:grid-cols-3 lg:gap-x-8 xl:gap-x-16 lg:gap-y-8 xl:gap-y-32 lg:py-16 lg:px-2 xl:px-24 2xl:px-36 ${sourceCodePro.className}`}>

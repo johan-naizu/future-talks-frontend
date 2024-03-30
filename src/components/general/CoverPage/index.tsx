@@ -7,21 +7,25 @@ import Blur from '/public/blur.svg';
 import BlurNearbyThing from '/public/blurNearbyThing.svg';
 import Filter from '/public/filter.svg';
 import 'font-awesome/css/font-awesome.min.css';
-import { Dispatch, SetStateAction, useMemo, useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import Select, { SingleValue } from 'react-select';
+
+
 const CoverPage = ({
     title,
     filterData,
-    selectedFilter,
-    setSelctedFilter
+    setSelctedFilter,
+    searchText,
+    setSearchText,
 }: {
     title: string,
     filterData: {
         value: string | null,
         label: string
     }[],
-    selectedFilter: string | null,
-    setSelctedFilter: Dispatch<SetStateAction<string | null>>
+    setSelctedFilter: Dispatch<SetStateAction<string | null>>,
+    searchText: string,
+    setSearchText: Dispatch<SetStateAction<string>>
 }) => {
     const [openFilter, setOpenFilter] = useState(false);
 
@@ -32,7 +36,9 @@ const CoverPage = ({
         setSelctedFilter(newValue?.value || null)
     }
 
-
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setSearchText(e.target.value)
+    }
     return (
         <div className={`${neueRegrade.className} pt-24 h-[70dvh] flex flex-col  items-center justify-center relative`}>
             <div className="flex items-center justify-center gap-4 h-18 md:h-36 gap-24 ">
@@ -53,6 +59,9 @@ const CoverPage = ({
                 <input
                     className="border-0 font-[FontAwesome] p-1 px-2 rounded-md w-full h-full bg-transparent text-primarycolor focus:outline-none"
                     placeholder="&#xF002; Search ..."
+                    name="search"
+                    value={searchText}
+                    onChange={handleInputChange}
                 />
                 <div className="h-12 rounded-md flex items-center justify-center relative">
                     <Image
@@ -65,9 +74,9 @@ const CoverPage = ({
                         {
                             openFilter && (
                                 <motion.div
-                                    className="absolute bg-primarycolor rounded-md p-2 h-12 w-48 lg:w-96 top-16 -right-0 -left-none flex items-center"
+                                    className="absolute bg-primarycolor rounded-md p-4 h-12 w-48 lg:w-96 top-16 -right-0 -left-none flex items-center"
                                     initial={{ opacity: 0, height: "0%", overflow: "hidden" }}
-                                    animate={{ opacity: [0, 0.4, 1], height: ["0%", "100%"], overflow: "visible" }}
+                                    animate={{ opacity: [0, 0.4, 1], height: ["20%", "150%"], overflow: "visible" }}
                                     exit={{ opacity: 0, height: "0%", overflow: "hidden" }}
                                 >
                                     <motion.span

@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react';
 import { getAllCourses } from '@/lib/course';
 import { Student } from '@/types';
 import PageTemplate from '@/components/general/PageTemplate';
+import { filter as fuzzyFilter } from 'fuzzy';
 
 
 
@@ -25,6 +26,7 @@ const Students = () => {
     const [filteredStudents, setFilteredStudents] = useState<{ data: Student[] }>({
         data: [],
     });
+    const [searchText, setSearchText] = useState<string>("");
 
 
     useEffect(() => {
@@ -52,15 +54,21 @@ const Students = () => {
     useEffect(() => {
         if (current === null)
             setFilteredStudents({
-                data: students?.data || []
+                data: fuzzyFilter(searchText, students?.data || [], {
+                    extract: (student: Student) => student.attributes.name || '',
+                }).map(item => item.original)
             })
         else {
             setFilteredStudents({
-                data: students?.data.filter(expert => expert.attributes.courses?.data.some(element => element.id === current)) || []
+                data: fuzzyFilter(searchText, students?.data.filter(student => student.attributes.courses?.data.some(element => element.id === current)) || [], {
+                    extract: (student: Student) => student.attributes.name || '',
+                }).map(item => item.original)
             })
+
         }
+
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [current])
+    }, [current, searchText])
 
     return (
         <PageTemplate className="w-screen min-h-screen h-full relative">
@@ -68,9 +76,9 @@ const Students = () => {
             <CoverPage
                 title="Students"
                 filterData={courses}
-                selectedFilter={current}
                 setSelctedFilter={setCurrent}
-
+                searchText={searchText}
+                setSearchText={setSearchText}
             />
 
 
