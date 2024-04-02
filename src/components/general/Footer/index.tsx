@@ -8,9 +8,8 @@ import { faLinkedin, faInstagram } from "@fortawesome/free-brands-svg-icons";
 import { neueRegrade, subjectivity } from "@/fonts";
 import Link from "next/link";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
-import MovingText from "./MovingText";
 import Marquee from "react-fast-marquee";
 const Footer = () => {
     const [hover, setHover] = useState(false);
@@ -26,7 +25,7 @@ const Footer = () => {
         },
         {
             name: "ABOUT US",
-            href: "/about", //TODO: change back to /about when the page is created
+            href: "/about",
         },
         {
             name: "STUDENTS",
@@ -34,7 +33,7 @@ const Footer = () => {
         },
         {
             name: "CONTACT US",
-            href: "/contact",
+            href: "/#get-in-touch",
         },
         {
             name: "EXPERTS",

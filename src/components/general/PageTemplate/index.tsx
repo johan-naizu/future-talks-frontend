@@ -15,6 +15,9 @@ const PageTemplate = ({
             initial={{ y: 25, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 25, opacity: 0 }}
+            style={{
+                scrollBehavior: "smooth"
+            }}
         >
             {children}
         </motion.div>

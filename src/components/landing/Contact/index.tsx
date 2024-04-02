@@ -4,6 +4,11 @@ import contactImage from '/public/contactImage.svg';
 import { neueRegrade } from "@/fonts";
 import send from '/public/send.svg';
 import { ChangeEvent, FormEvent, useState } from "react";
+import { sendMessage } from "@/lib/getInTouch";
+import { Bounce, ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 const Contact = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -19,8 +24,25 @@ const Contact = () => {
         })
     }
 
-    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        if (!formData.name || !formData.email || !formData.message) {
+            return toast.error("Please fill in all fields")
+        }
+
+        try {
+            await sendMessage(formData);
+            toast.success("Message sent successfully")
+            setFormData({
+                name: "",
+                email: "",
+                message: "",
+            })
+        }
+        catch (error) {
+            console.error(error);
+            toast.error("An error occurred while sending the message")
+        }
     }
 
     return (
@@ -87,6 +109,19 @@ const Contact = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                transition={Bounce}
+            />
         </div>
     )
 }

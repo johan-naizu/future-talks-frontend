@@ -1,9 +1,10 @@
 import axios from "axios";
 import { ApplicationForm } from "@/types";
+const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 export const submitApplication = async (data: ApplicationForm) => {
     try {
-        const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/applications`, { data });
+        const response = await axios.post(`${API_URL}/api/applications`, { data });
         return response.data;
     }
     catch (error) {

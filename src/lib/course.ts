@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+import { Course } from '@/types';
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
 
