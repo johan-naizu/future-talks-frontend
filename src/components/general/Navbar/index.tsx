@@ -41,19 +41,22 @@ const Navbar = () => {
     return (
         <>
             <nav className="w-full h-16 bg-none flex fixed top-0 z-[10000] overflow-hidden bg-white/80">
-                <div className={`h-full flex items-center w-full md:w-1/3 py-2 px-4 bg-[#79BCB8] md:rounded-br-2xl justify-between gap-4 font-semibold text-sm xl:text-2xl ${neueRegrade.className}`}>
+                <div className={`h-full flex items-center w-full md:w-1/3 py-2 px-4 bg-[#79BCB8] md:rounded-br-2xl justify-between gap-4 font-semibold text-[0.7rem] lg:text-sm xl:text-[1.2rem] ${neueRegrade.className}`}>
                     <Image src={logo} alt="logo" width={40} />
-                    <span className="text-white hidden md:block"> Future Talks </span>
+                    <span className="text-white hidden md:block text-center"> Future Talks </span>
                     <span className="w-1/3 border hidden md:block" />
-                    <div className="block md:hidden flex items-center justify-center overflow-hidden">
+                    <div className="block md:hidden flex items-center justify-center overflow-hidden w-full">
+                        <span className="w-full font-semibold text-lg italic text-primarycolor">
+                            FUTURE TALKS
+                        </span>
                         <div className="z-[1000000000]">
                             <Hamburger toggled={open} toggle={setOpen} color="white" />
                         </div>
                         {
                             !open && (
                                 <motion.span
-                                    layoutId="circle"
-                                    className="p-10 absolute bg-[#79BCB8] rounded-3xl absolute top-0 right-0 h-full w-full -z-10"
+                                    layoutId="dropdown"
+                                    className="p-10 absolute bg-transparent rounded-3xl absolute top-0 right-0 h-full w-full -z-10"
                                 />
                             )
                         }
@@ -89,7 +92,7 @@ const Navbar = () => {
                     open && (
                         <motion.div
                             className="z-[1] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl fixed top-10 right-0 h-[50dvh]"
-                            layoutId="circle"
+                            layoutId="dropdown"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}

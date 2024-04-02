@@ -90,7 +90,7 @@ const Footer = () => {
                     className={`bg-white text-${hover ? 'white' : 'primarycolor'} ps-4 absolute bottom-4 left-4 font-bold flex items-center justify-center gap-4 z-0 ${neueRegrade.className}`}
                     onMouseEnter={() => setHover(true)}
                     onMouseLeave={() => setHover(false)}
-                    onClick={() => router.push("/")}
+                    onClick={() => router.push("/apply")}
                 >
                     <span className="z-10">
                         Apply now

@@ -12,6 +12,7 @@ import { getAllCourses } from '@/lib/course';
 import { Professional } from '@/types';
 import PageTemplate from '@/components/general/PageTemplate';
 import { filter as fuzzyFilter } from 'fuzzy';
+import CardContainer from '@/components/general/CardContainer';
 
 
 
@@ -82,7 +83,7 @@ const Experts = () => {
             />
 
 
-            <div className={`w-full h-full mt-16 p-4 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-16 lg:gap-y-8 xl:gap-y-32 lg:py-16 lg:px-2 xl:px-24 2xl:px-36 ${sourceCodePro.className}`}>
+            {/* <div className={`w-full h-full mt-16 p-4 flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-x-8 xl:gap-x-16 lg:gap-y-8 xl:gap-y-32 lg:py-16 lg:px-2 xl:px-12 2xl:px-36 ${sourceCodePro.className}`}>
                 {
                     filteredExperts?.data.map(expert => (
                         <Card
@@ -91,7 +92,13 @@ const Experts = () => {
                         />
                     ))
                 }
-            </div>
+            </div> */}
+
+            <CardContainer
+                type="professional"
+                studentData={filteredExperts}
+                cols={2}
+            />
 
         </PageTemplate>
     )
