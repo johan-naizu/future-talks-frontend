@@ -53,21 +53,30 @@ const Students = () => {
     }, []);
 
     useEffect(() => {
-        if (current === null)
-            setFilteredStudents({
-                data: fuzzyFilter(searchText, students?.data || [], {
+        let filteredData: Set<Student>;
+        if (current === null) {
+            filteredData = new Set([
+                ...fuzzyFilter(searchText, students?.data || [], {
                     extract: (student: Student) => student.attributes.name || '',
+                }).map(item => item.original),
+                ...fuzzyFilter(searchText, students?.data || [], {
+                    extract: (student: Student) => student.attributes.courses?.data[0].attributes.name || '',
                 }).map(item => item.original)
-            })
-        else {
-            setFilteredStudents({
-                data: fuzzyFilter(searchText, students?.data.filter(student => student.attributes.courses?.data.some(element => element.id === current)) || [], {
-                    extract: (student: Student) => student.attributes.name || '',
-                }).map(item => item.original)
-            })
-
+            ])
         }
-
+        else {
+            filteredData = new Set([
+                ...fuzzyFilter(searchText, students?.data.filter(student => student.attributes.courses?.data.some(element => element.id === current)) || [], {
+                    extract: (student: Student) => student.attributes.name || '',
+                }).map(item => item.original),
+                ...fuzzyFilter(searchText, students?.data.filter(student => student.attributes.courses?.data.some(element => element.id === current)) || [], {
+                    extract: (student: Student) => student.attributes.courses?.data[0].attributes.name || '',
+                }).map(item => item.original)
+            ])
+        }
+        setFilteredStudents({
+            data: Array.from(filteredData.values())
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [current, searchText])
 

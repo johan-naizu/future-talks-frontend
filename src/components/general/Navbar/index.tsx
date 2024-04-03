@@ -46,8 +46,8 @@ const Navbar = () => {
                     <span className="text-white hidden md:block text-center"> Future Talks </span>
                     <span className="w-1/3 border hidden md:block" />
                     <div className="block md:hidden flex items-center justify-center overflow-hidden w-full">
-                        <span className="w-full font-semibold text-lg italic text-primarycolor">
-                            FUTURE TALKS
+                        <span className="w-full font-semibold text-lg text-white">
+                            Future Talks
                         </span>
                         <div className="z-[1000000000]">
                             <Hamburger toggled={open} toggle={setOpen} color="white" />

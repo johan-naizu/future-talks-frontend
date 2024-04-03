@@ -63,12 +63,13 @@ const CoverPage = ({
                     value={searchText}
                     onChange={handleInputChange}
                 />
-                <div className="h-12 rounded-md flex items-center justify-center relative">
+                <div className="h-12 rounded-md flex items-center justify-center relative cursor-pointer">
                     <Image
                         src={Filter}
                         alt="filter"
                         width={50}
                         onClick={() => setOpenFilter(!openFilter)}
+                        className="hover:brightness-75 transition-transform duration-300 ease-in-out"
                     />
                     <AnimatePresence>
                         {

@@ -53,19 +53,30 @@ const Experts = () => {
     }, []);
 
     useEffect(() => {
-        if (current === null)
-            setFilteredExperts({
-                data: fuzzyFilter(searchText, experts?.data || [], {
+        let filteredData: Set<Professional>;
+        if (current === null) {
+            filteredData = new Set([
+                ...fuzzyFilter(searchText, experts?.data || [], {
                     extract: (expert: Professional) => expert.attributes.name || '',
+                }).map(item => item.original),
+                ...fuzzyFilter(searchText, experts?.data || [], {
+                    extract: (expert: Professional) => expert.attributes.courses?.data[0].attributes.name || '',
                 }).map(item => item.original)
-            })
-        else {
-            setFilteredExperts({
-                data: fuzzyFilter(searchText, experts?.data.filter(expert => expert.attributes.courses?.data.some(element => element.id === current)) || [], {
-                    extract: (expert: Professional) => expert.attributes.name || '',
-                }).map(item => item.original)
-            })
+            ])
         }
+        else {
+            filteredData = new Set([
+                ...fuzzyFilter(searchText, experts?.data.filter(expert => expert.attributes.courses?.data.some(element => element.id === current)) || [], {
+                    extract: (expert: Professional) => expert.attributes.name || '',
+                }).map(item => item.original),
+                ...fuzzyFilter(searchText, experts?.data.filter(expert => expert.attributes.courses?.data.some(element => element.id === current)) || [], {
+                    extract: (expert: Professional) => expert.attributes.courses?.data[0].attributes.name || '',
+                }).map(item => item.original)
+            ])
+        }
+        setFilteredExperts({
+            data: Array.from(filteredData.values())
+        })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [current, searchText])
