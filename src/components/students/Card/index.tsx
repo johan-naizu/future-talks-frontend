@@ -12,7 +12,6 @@ const Card = ({
     const [show, setShow] = useState(false);
     const [current, setCurrent] = useState(0);
     const [images, setImages] = useState<string[]>([]);
-
     useEffect(() => {
         setImages(attributes.pfp.data.map((image) => `${process.env.NEXT_PUBLIC_BACKEND_URL}${image.attributes.url}`));
         const interval = setInterval(() => {

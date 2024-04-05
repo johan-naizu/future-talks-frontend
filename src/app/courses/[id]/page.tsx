@@ -5,14 +5,17 @@ import PageTemplate from "@/components/general/PageTemplate";
 import Image from 'next/image';
 import Grid from '/public/Gride.svg';
 import { useCourseContext } from "@/hooks/useCourseContext";
-import { Course } from "@/types";
-import { useEffect, useState } from "react";
+import { Course, Student } from "@/types";
+import { useEffect, useMemo, useState } from "react";
 import CoursesImage from '/public/courses-slug-image.svg';
 import Blur from '/public/blur.svg';
 import BlurNearbyThing from '/public/blurNearbyThing.svg';
 import { neueRegrade, sourceCodePro } from "@/fonts";
 import gradTypeUnderline from '/public/gradtype.svg';
 import Button from "@/components/general/Button";
+import Card from "@/components/students/Card";
+import { AnimatePresence, motion } from "framer-motion";
+import RightArrow from '/public/right.svg';
 
 const CourseSlugPage = () => {
     const params: {
@@ -20,6 +23,7 @@ const CourseSlugPage = () => {
     } = useParams()
     const { courses } = useCourseContext();
     const [course, setCourse] = useState<Course | undefined>(undefined);
+    const [current, setCurrent] = useState<number>(0);
     useEffect(() => {
         if (courses) {
             const course = courses.data.find(course => course.id == params.id);
@@ -27,11 +31,54 @@ const CourseSlugPage = () => {
         }
     }, [courses, params.id])
 
+
     const router = useRouter();
+
+    const dummyData = useMemo((): Student[] => [
+        // {
+        //     id: "1",
+        //     attributes: {
+        //         name: "first guy",
+        //         pfp: {
+        //             data: []
+        //         },
+        //         remarks: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in turpis ut nunc.",
+        //         phoneNumber: "1234567890",
+        //         email: "a@b.com",
+        //     },
+
+        // },
+        // {
+        //     id: "2",
+        //     attributes: {
+        //         name: "Second guy",
+        //         pfp: {
+        //             data: []
+        //         },
+        //         remarks: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in turpis ut nunc.",
+        //         phoneNumber: "1234567890",
+        //         email: "a@b.com",
+        //     },
+
+        // },
+        // {
+        //     id: "3",
+        //     attributes: {
+        //         name: "Third guy",
+        //         pfp: {
+        //             data: []
+        //         },
+        //         remarks: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed in turpis ut nunc.",
+        //         phoneNumber: "1234567890",
+        //         email: "a@b.com",
+        //     },
+
+        // },
+    ], []);
 
     return (
         <PageTemplate
-            className="w-screen h-full flex items-center justify-center relative"
+            className="w-screen h-full flex flex-col items-center justify-center relative mb-24"
         >
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <div className="flex w-full h-full my-24 px-2 lg:px-8 items-end">
@@ -90,7 +137,47 @@ const CourseSlugPage = () => {
                     />
                 </div>
             </div>
-        </PageTemplate>
+
+            <h1 className="font-semibold mt-24 text-xl"> Students who&apos;ve taken the course</h1>
+            <div className="mt-24 px-48 w-full h-full flex overflow-hidden items-center  relative">
+                <div className="w-full relative overflow-hidden">
+                    {
+                        (course?.attributes.students?.data.length || 0) > 0 ? (
+                            <>
+                                <AnimatePresence>
+                                    <motion.div
+                                        key={current}
+                                        initial={{ position: "absolute", x: "100%" }}
+                                        animate={{ position: "relative", x: "0%" }}
+                                        exit={{ position: "absolute", x: "-100%" }}
+                                        transition={{
+                                            duration: 0.5,
+                                            type: "tween",
+                                        }}
+                                        className="w-full h-full"
+                                    >
+                                        <Card
+                                            key={current}
+                                            {...dummyData[current]}
+                                        />
+                                    </motion.div>
+                                </AnimatePresence>
+                                <button
+                                    className="w-1/6 h-full flex items-center justify-center"
+                                    onClick={() => setCurrent(prev => (prev + 1) % dummyData.length)}
+                                >
+                                    <Image src={RightArrow} alt="right" width={25} />
+                                </button>
+                            </>
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center">
+                                <h1 className="text-sm font-bold text-gray-500">Nothing to display</h1>
+                            </div>
+                        )
+                    }
+                </div>
+            </div>
+        </PageTemplate >
     )
 }
 

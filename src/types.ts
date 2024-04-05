@@ -26,6 +26,9 @@ export interface CourseAttributes {
     logo?: {
         data: Picture,
     }
+    students?: {
+        data: Student[]
+    }
 }
 
 export type GraduationType =
