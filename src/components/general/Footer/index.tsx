@@ -33,7 +33,7 @@ const Footer = () => {
         },
         {
             name: "CONTACT US",
-            href: "/#get-in-touch",
+            href: "/contact",
         },
         {
             name: "EXPERTS",

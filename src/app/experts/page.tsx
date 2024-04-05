@@ -13,13 +13,15 @@ import { Professional } from '@/types';
 import PageTemplate from '@/components/general/PageTemplate';
 import { filter as fuzzyFilter } from 'fuzzy';
 import CardContainer from '@/components/general/CardContainer';
+import { useCourseContext } from '@/hooks/useCourseContext';
 
 
 
 
 const Experts = () => {
+    const { courses } = useCourseContext();
     const [experts, setExperts] = useState<{ data: Professional[] } | undefined>(undefined);
-    const [courses, setCourses] = useState<{
+    const [coursesFilter, setCoursesFilter] = useState<{
         label: string,
         value: string | null
     }[]>([]);
@@ -35,11 +37,10 @@ const Experts = () => {
             const expertsData = await getAllExperts();
             setExperts(expertsData);
             setFilteredExperts({ data: expertsData?.data || [] })
-            const coursesData = await getAllCourses();
-            setCourses(
+            setCoursesFilter(
                 [
                     { label: "All", value: null },
-                    ...(coursesData?.data.map(course => {
+                    ...(courses?.data.map(course => {
                         return {
                             label: course.attributes.name,
                             value: course.id
@@ -50,7 +51,7 @@ const Experts = () => {
         }
 
         getData();
-    }, []);
+    }, [courses]);
 
     useEffect(() => {
         let filteredData: Set<Professional>;
@@ -86,7 +87,7 @@ const Experts = () => {
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <CoverPage
                 title="Experts"
-                filterData={courses}
+                filterData={coursesFilter}
                 setSelctedFilter={setCurrent}
                 searchText={searchText}
                 setSearchText={setSearchText}

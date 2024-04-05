@@ -7,19 +7,21 @@ import CoverPage from "@/components/general/CoverPage";
 import Card from "@/components/students/Card";
 import { sourceCodePro } from "@/fonts";
 import { getAllStudents } from '@/lib/students';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import { getAllCourses } from '@/lib/course';
 import { Student } from '@/types';
 import PageTemplate from '@/components/general/PageTemplate';
 import { filter as fuzzyFilter } from 'fuzzy';
 import CardContainer from '@/components/general/CardContainer';
+import { useCourseContext } from '@/hooks/useCourseContext';
 
 
 
 
 const Students = () => {
+    const { courses } = useCourseContext();
     const [students, setStudents] = useState<{ data: Student[] } | undefined>(undefined);
-    const [courses, setCourses] = useState<{
+    const [coursesFilter, setCoursesFilter] = useState<{
         label: string,
         value: string | null
     }[]>([]);
@@ -35,11 +37,10 @@ const Students = () => {
             const studentsData = await getAllStudents();
             setStudents(studentsData);
             setFilteredStudents({ data: studentsData?.data || [] })
-            const coursesData = await getAllCourses();
-            setCourses(
+            setCoursesFilter(
                 [
                     { label: "All", value: null },
-                    ...(coursesData?.data.map(course => {
+                    ...(courses?.data.map(course => {
                         return {
                             label: course.attributes.name,
                             value: course.id
@@ -50,7 +51,7 @@ const Students = () => {
         }
 
         getData();
-    }, []);
+    }, [courses]);
 
     useEffect(() => {
         let filteredData: Set<Student>;
@@ -85,7 +86,7 @@ const Students = () => {
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <CoverPage
                 title="Students"
-                filterData={courses}
+                filterData={coursesFilter}
                 setSelctedFilter={setCurrent}
                 searchText={searchText}
                 setSearchText={setSearchText}

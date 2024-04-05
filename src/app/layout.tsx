@@ -3,6 +3,7 @@ import "./globals.scss";
 import { inter } from "@/fonts";
 import Footer from "@/components/general/Footer";
 import Navbar from "@/components/general/Navbar";
+import { CourseContextProvider } from "@/Context";
 
 
 export const metadata: Metadata = {
@@ -18,9 +19,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} relative z-0`}>
-        <Navbar />
-        {children}
-        <Footer />
+        <CourseContextProvider>
+          <Navbar />
+          {children}
+          <Footer />
+        </CourseContextProvider>
       </body>
     </html>
   );

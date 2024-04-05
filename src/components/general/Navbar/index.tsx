@@ -13,10 +13,10 @@ const Navbar = () => {
             name: "Home",
             href: "/",
         },
-        // {
-        //     name: "Courses",
-        //     href: "/courses",
-        // },
+        {
+            name: "Courses",
+            href: "/courses",
+        },
         {
             name: "Students",
             href: "/students",
@@ -27,7 +27,7 @@ const Navbar = () => {
         },
         {
             name: "About",
-            href: "/#", //TODO: change back to /about when the page is created
+            href: "/about", //TODO: change back to /about when the page is created
         },
         {
             name: "Apply",

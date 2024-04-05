@@ -11,24 +11,53 @@ import Card from '@/components/course/Card';
 import PageTemplate from '@/components/general/PageTemplate';
 import { getAllCourses } from '@/lib/course';
 import CardContainer from '@/components/general/CardContainer';
+import { useCourseContext } from '@/hooks/useCourseContext';
+import { filter as fuzzyFilter } from 'fuzzy';
 
 const Courses = () => {
+    const { courses: data } = useCourseContext();
     const [courses, setCourses] = useState<{
         data: Course[],
-    }>({ data: [] });
+    }>(data || { data: [] });
     const [searchText, setSearchText] = useState<string>("");
+    const [current, setCurrent] = useState<string | null>(null)
+    const [coursesFilter, setCoursesFilter] = useState<{
+        label: string,
+        value: string | null
+    }[]>([]);
+    const [filteredCourses, setFilteredCourses] = useState<{
+        data: Course[]
+    }>({
+        data: []
+    });
+    useEffect(() => {
+        if (data) {
+            setCourses(data);
+        }
+    }, [data])
 
     useEffect(() => {
-        const getData = async () => {
-            const coursesData = await getAllCourses();
-            if (coursesData)
-                setCourses(coursesData);
-            else
-                setCourses({ data: [] });
+        let filteredData: Set<Course>;
+        if (current === null) {
+            filteredData = new Set([
+                ...fuzzyFilter(searchText, courses?.data || [], {
+                    extract: (course: Course) => course.attributes.name || '',
+                }).map(item => item.original),
+                ...fuzzyFilter(searchText, courses?.data || [], {
+                    extract: (course: Course) => course.attributes.courseType || '',
+                }).map(item => item.original)
+            ])
         }
+        else {
+            //filter with gradtype
+            filteredData = new Set(courses?.data);
+        }
+        setFilteredCourses({
+            data: Array.from(filteredData.values())
+        })
 
-        getData();
-    }, []);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [current, searchText])
 
     return (
         <PageTemplate
@@ -38,14 +67,14 @@ const Courses = () => {
             <CoverPage
                 title="Courses"
                 filterData={[]}
-                setSelctedFilter={() => { }}
+                setSelctedFilter={setCurrent}
                 searchText={searchText}
                 setSearchText={setSearchText}
             />
 
             <CardContainer
                 type="course"
-                courseData={courses}
+                courseData={filteredCourses}
                 cols={3}
             />
 
