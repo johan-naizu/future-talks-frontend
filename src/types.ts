@@ -89,9 +89,15 @@ export interface UniversityAttributes {
     name: string,
     location: string,
     address: string,
-    remarks: string,
+    description: string,
     students: {
         data: Student[]
+    },
+    courses: {
+        data: Course[]
+    },
+    images: {
+        data: Picture[]
     }
 }
 
@@ -105,6 +111,7 @@ export interface Picture {
 
 export interface ApplicationForm {
     course?: string,
+    university?: string,
     name: string,
     email: string,
     dob: string,

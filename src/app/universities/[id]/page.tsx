@@ -69,11 +69,11 @@ const UniversitySlugPage = () => {
                     </div>
 
                     <div className={"w-full lg:w-4/5 mt-24 " + sourceCodePro.className}>
-                        <h2 className="text-2xl font-bold mt-4">Remarks</h2>
-                        <p className="mt-4 font-semibold text-lg text-gray-500">{university?.attributes.remarks}</p>
+                        <h2 className="text-2xl font-bold mt-4">Description</h2>
+                        <p className="mt-4 font-semibold text-lg text-gray-500">{university?.attributes.description}</p>
                     </div>
 
-                    <div className="w-full lg:w-1/4 text-sm lg:text-md mt-10">
+                    <div className="w-full md:w-1/3 lg:w-1/4 text-xs lg:text-md mt-10">
                         <Button
                             onClick={() => router.push("/apply")}
                             text="Apply Now"

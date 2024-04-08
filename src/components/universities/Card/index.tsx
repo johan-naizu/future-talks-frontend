@@ -26,7 +26,7 @@ const Card = ({
             </div>
             <div className='my-2 h-full overflow-hidden py-2 text-ellipsis overflow-hidden'>
                 <div className='w-full h-full text-regular text-neutral-500 text-ellipsis overflow-hidden'>
-                    {attributes.remarks.slice(0, 85)}...
+                    {attributes.description.slice(0, 85)}...
                 </div>
             </div>
             <div>

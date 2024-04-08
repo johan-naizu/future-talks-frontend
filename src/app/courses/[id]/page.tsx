@@ -77,7 +77,7 @@ const CourseSlugPage = () => {
                         <p className="mt-4 font-semibold text-lg text-gray-500">{course?.attributes?.requirements || course?.attributes.description}</p>
                     </div>
 
-                    <div className="w-full lg:w-1/4 text-sm lg:text-md mt-10">
+                    <div className="w-full md:w-1/3 lg:w-1/4 text-xs lg:text-md mt-10">
                         <Button
                             onClick={() => router.push("/apply")}
                             text="Apply Now"

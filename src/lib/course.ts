@@ -13,7 +13,11 @@ export const getAllCourses = async () => {
     try {
         const response = await axios.get<{
             data: Course[]
-        }>(`${API_URL}/api/courses`, config);
+        }>(`${API_URL}/api/courses`, {
+            params: {
+                'populate[*][populate]': "*"
+            }
+        });
 
         return response.data;
     }

@@ -52,7 +52,7 @@ const InputField = ({
             {
                 type === "select" && (
                     <>
-                        <label htmlFor={name} className='text-black font-medium'>Gender</label>
+                        <label htmlFor={name} className='text-black font-medium'>{label}</label>
                         <select
                             className='w-full h-11 border rounded-sm border-primarycolor focus:outline-green-600'
                             name={name}

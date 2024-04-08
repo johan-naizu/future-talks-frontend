@@ -10,6 +10,7 @@ import { submitApplication, validateDate, validateEmail } from '@/lib/applicatio
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import InputField from '@/components/general/InputField';
+import { useCourseContext } from '@/hooks/useCourseContext';
 
 const Apply = () => {
     const [formData, setFormData] = useState<ApplicationForm>({
@@ -32,16 +33,7 @@ const Apply = () => {
 
     })
 
-    const [courses, setCourses] = useState<Course[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await getAllCourses();
-            setCourses(response?.data || []);
-        }
-
-        fetchData();
-    }, []);
+    const { courses, universities } = useCourseContext();
 
     const handleChange = ({ target }: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
         if (Object.keys(formData.address).includes(target.name)) {
@@ -77,8 +69,21 @@ const Apply = () => {
                     type: "select",
                     label: "Course",
                     name: "course",
-                    selectData: [{ key: "Select Course", value: undefined }, ...courses.map(course => ({ key: course.attributes.name, value: course.id }))],
+                    selectData:
+                        courses
+                            ? [{ key: "Select Course", value: undefined }, ...courses.data.map(course => ({ key: course.attributes.name, value: course.id }))]
+                            : [{ key: "Loading...", value: undefined }],
                     value: formData.course,
+                },
+                {
+                    type: "select",
+                    label: "University",
+                    name: "university",
+                    selectData:
+                        universities
+                            ? [{ key: "Select University", value: undefined }, ...universities.data.map(university => ({ key: university.attributes.name, value: university.id }))]
+                            : [{ key: "Loading...", value: undefined }],
+                    value: formData.university,
                 },
                 {
                     type: "text",
@@ -187,7 +192,7 @@ const Apply = () => {
                 },
             ]
         ]
-    }), [formData, courses])
+    }), [formData, courses, universities])
 
 
 

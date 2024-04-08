@@ -63,7 +63,7 @@ const Contact = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua. Ut enim ad minim veniam, quisnostrud exercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eufugiat nulla pariatur. Excepteur sint occaecatcupidatat non proident, sunt in culpa qui officiadeserunt mollit anim id est laborum
                         </p>
                         <div className="w-full mt-auto flex justify-end">
-                            <div className="w-full lg:w-1/4">
+                            <div className="w-full md:w-1/3 xl:w-1/4 ">
                                 <Button
                                     text="Contact Us"
                                     rounded

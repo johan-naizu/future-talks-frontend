@@ -10,36 +10,44 @@ import Hamburger from "hamburger-react";
 const Navbar = () => {
     const navItems = useMemo(() => [
         {
-            name: "Home",
+            label: "Home",
+            name: "",
             href: "/",
         },
         {
-            name: "Courses",
+            label: "Courses",
+            name: "courses",
             href: "/courses",
         },
         {
-            name: "Colleges",
+            label: "Colleges",
+            name: "universities",
             href: "/universities",
         },
         {
-            name: "Students",
+            label: "Students",
+            name: "students",
             href: "/students",
         },
         {
-            name: "Experts",
+            label: "Experts",
+            name: "experts",
             href: "/experts",
         },
         {
-            name: "About",
+            label: "About",
+            name: "about",
             href: "/about", //TODO: change back to /about when the page is created
         },
         {
-            name: "Apply",
+            label: "Apply",
+            name: "apply",
             href: "/apply",
         }
     ], []);
 
     const pathname = usePathname();
+    const currentPath = pathname.split("/")[1];
 
     const [open, setOpen] = useState(false);
     return (
@@ -73,10 +81,10 @@ const Navbar = () => {
                             <Link
                                 key={index}
                                 href={item.href}
-                                className={`relative p-1 px-2 text-primarycolor font-medium text-sm xl:text-md ${item.name === "Apply" ? "bg-primarycolor text-white px-4 py-2 rounded-full" : ""}`}
+                                className={`relative p-1 px-2 text-primarycolor font-medium text-sm xl:text-md ${item.label === "Apply" ? "bg-primarycolor text-white px-4 py-2 rounded-full" : ""}`}
                             >
                                 {
-                                    item.href === pathname && item.name !== "Apply" && (
+                                    item.name === currentPath && item.label !== "Apply" && (
                                         <motion.span
                                             layoutId="nav-item-bottom"
                                             className="absolute left-1/4 bottom-0 w-1/2 p-[0.1rem] rounded-sm bg-primarycolor -z-10"
@@ -84,7 +92,7 @@ const Navbar = () => {
                                     )
                                 }
                                 <span className="z-10">
-                                    {item.name}
+                                    {item.label}
                                 </span>
                             </Link>
                         ))
@@ -106,10 +114,10 @@ const Navbar = () => {
                                     <Link
                                         key={index}
                                         href={item.href}
-                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.name === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${(item.href === pathname && item.name !== "Apply") ? "bg-white text-primarycolor" : "text-white   "}`}
+                                        className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.label === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${(item.name === currentPath && item.label !== "Apply") ? "bg-white text-primarycolor" : "text-white   "}`}
                                         onClick={() => setOpen(false)}
                                     >
-                                        {item.name}
+                                        {item.label}
                                     </Link>
                                 ))
                             }

@@ -70,7 +70,7 @@ const Contact = () => {
                         <Image
                             src={Circle}
                             alt="contact-circle-big"
-                            className="absolute bottom-0 right-0 hidden lg:block    "
+                            className="absolute bottom-0 right-0 hidden lg:block"
                             width={200}
                             height={200}
                         />

@@ -12,7 +12,11 @@ export const getAllUniversities = async () => {
     try {
         const response = await axios.get<{
             data: University[]
-        }>(`${API_URL}/api/universities`, config);
+        }>(`${API_URL}/api/universities`, {
+            params: {
+                'populate[students][populate]': "*"
+            }
+        });
 
         return response.data;
     }
