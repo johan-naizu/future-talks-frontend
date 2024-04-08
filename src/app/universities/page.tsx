@@ -5,31 +5,28 @@ import Grid from '/public/Gride.svg';
 import 'font-awesome/css/font-awesome.min.css';
 import CoverPage from "@/components/general/CoverPage";
 import { useEffect, useState } from 'react';
-import { Course } from '@/types';
+import { University } from '@/types';
 import PageTemplate from '@/components/general/PageTemplate';
 import CardContainer from '@/components/general/CardContainer';
-import { useCourseContext } from '@/hooks/useCourseContext';
 import { filter as fuzzyFilter } from 'fuzzy';
+import { useCourseContext } from '@/hooks/useCourseContext';
 
 const Courses = () => {
-    const { courses } = useCourseContext();
-    const [searchText, setSearchText] = useState<string>("");
-    const [filteredCourses, setFilteredCourses] = useState<{
-        data: Course[]
-    }>({
-        data: []
-    });
+    const { universities } = useCourseContext();
+    const [searchText, setSearchText] = useState<string>('');
+    const [filteredUniversities, setFilteredUniversities] = useState<{ data: University[] }>({ data: [] });
 
     useEffect(() => {
-        const filteredData = fuzzyFilter(searchText, courses?.data || [], {
-            extract: (course: Course) => course.attributes.name || '',
+        const filteredData = fuzzyFilter(searchText, universities?.data || [], {
+            extract: (univesity: University) => univesity.attributes.name || '',
         }).map(item => item.original)
-        setFilteredCourses({
-            data: filteredData
+        setFilteredUniversities({
+            data: filteredData,
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [courses, searchText])
+    }, [universities, searchText])
+
 
     return (
         <PageTemplate
@@ -37,14 +34,14 @@ const Courses = () => {
         >
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <CoverPage
-                title="Courses"
+                title="Universities"
                 searchText={searchText}
                 setSearchText={setSearchText}
             />
 
             <CardContainer
-                type="course"
-                courseData={filteredCourses}
+                type="university"
+                universityData={filteredUniversities}
                 cols={3}
             />
 

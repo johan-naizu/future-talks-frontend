@@ -1,11 +1,13 @@
 "use client"
 
-import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { createContext, useState, ReactNode, useEffect } from "react";
 import { getAllCourses } from "@/lib/course";
-import { Course } from "@/types";
+import { Course, University } from "@/types";
+import { getAllUniversities } from "@/lib/university";
 
 export const CourseContext = createContext<{
-    courses: { data: Course[] } | undefined
+    courses?: { data: Course[] }
+    universities?: { data: University[] }
 } | undefined>(undefined);
 
 export const CourseContextProvider = ({
@@ -14,11 +16,14 @@ export const CourseContextProvider = ({
     children: ReactNode
 }) => {
     const [courses, setCourses] = useState<{ data: Course[] } | undefined>(undefined);
+    const [universities, setUniversities] = useState<{ data: University[] } | undefined>(undefined);
 
     useEffect(() => {
         const getData = async () => {
             const coursesData = await getAllCourses();
+            const universitiesData = await getAllUniversities();
             setCourses(coursesData);
+            setUniversities(universitiesData);
         }
 
         getData();
@@ -26,7 +31,8 @@ export const CourseContextProvider = ({
 
     return (
         <CourseContext.Provider value={{
-            courses
+            courses,
+            universities,
         }}>
             {children}
         </CourseContext.Provider>

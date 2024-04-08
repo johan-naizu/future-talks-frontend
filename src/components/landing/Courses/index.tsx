@@ -1,11 +1,9 @@
 import { neueRegrade } from "@/fonts";
 import Card from "./Card";
-import { useMemo } from "react";
-import { getAllCourses } from "@/lib/course";
+import { getTrendingCourses } from "@/lib/course";
 
 const Courses = async () => {
-    const courses = await getAllCourses();
-
+    const courses = await getTrendingCourses()
     return (
         <div className={`w-screen flex flex-col h-full bg-[#f5f5f5] ${neueRegrade.className}`}>
             <h1 className="text-3xl font-extrabold p-4 w-full text-center mt-4"> Trending Courses </h1>
@@ -16,7 +14,7 @@ const Courses = async () => {
                             <Card
                                 title={course.attributes.name}
                                 link={`/courses/${course.id}`}
-                                image={`${process.env.NEXT_PUBLIC_BACKEND_URL}${course.attributes.logo?.data.attributes.url}` || ""}
+                                image={course.attributes.logo ? `${process.env.NEXT_PUBLIC_BACKEND_URL}${course.attributes.logo?.data.attributes.url}` : "/nursing.svg"}
                             />
                         </div>
                     ))

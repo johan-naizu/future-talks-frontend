@@ -19,11 +19,11 @@ const CoverPage = ({
     setSearchText,
 }: {
     title: string,
-    filterData: {
+    filterData?: {
         value: string | null,
         label: string
     }[],
-    setSelctedFilter: Dispatch<SetStateAction<string | null>>,
+    setSelctedFilter?: Dispatch<SetStateAction<string | null>>,
     searchText: string,
     setSearchText: Dispatch<SetStateAction<string>>
 }) => {
@@ -33,7 +33,7 @@ const CoverPage = ({
         value: string | null,
         label: string
     }>) => {
-        setSelctedFilter(newValue?.value || null)
+        (setSelctedFilter != undefined) && setSelctedFilter(newValue?.value || null)
     }
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -55,7 +55,7 @@ const CoverPage = ({
                 </div>
             </div>
 
-            <div className="border border-primarycolor mt-16 md:mt-0 lg:absolute w-1/2 md:w-96 py-1 px-2 rounded-md bottom-0 left-48 bg-white flex items-center justify-center">
+            <div className="border border-primarycolor mt-16 md:mt-0 lg:absolute w-11/12 md:w-96 py-1 px-2 rounded-md bottom-0 left-48 bg-white flex items-center justify-center">
                 <input
                     className="border-0 font-[FontAwesome] p-1 px-2 rounded-md w-full h-full bg-transparent text-primarycolor focus:outline-none"
                     placeholder="&#xF002; Search ..."
@@ -63,70 +63,74 @@ const CoverPage = ({
                     value={searchText}
                     onChange={handleInputChange}
                 />
-                <div className="h-12 rounded-md flex items-center justify-center relative cursor-pointer">
-                    <Image
-                        src={Filter}
-                        alt="filter"
-                        width={50}
-                        onClick={() => setOpenFilter(!openFilter)}
-                        className="hover:brightness-75 transition-transform duration-300 ease-in-out"
-                    />
-                    <AnimatePresence>
-                        {
-                            openFilter && (
-                                <motion.div
-                                    className="absolute bg-primarycolor rounded-md p-4 h-12 w-48 lg:w-96 top-16 -right-0 -left-none flex items-center"
-                                    initial={{ opacity: 0, height: "0%", overflow: "hidden" }}
-                                    animate={{ opacity: [0, 0.4, 1], height: ["20%", "150%"], overflow: "visible" }}
-                                    exit={{ opacity: 0, height: "0%", overflow: "hidden" }}
-                                >
-                                    <motion.span
-                                        className="absolute bg-primarycolor p-2 h-4 w-4 -top-4 right-2"
-                                        style={{
-                                            clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)"
-                                        }}
-                                    />
-                                    <Select
-                                        defaultValue={filterData[0]}
-                                        isSearchable={false}
-                                        options={filterData}
-                                        className="w-full"
-                                        onChange={handleChange}
-                                        styles={{
-                                            control(base) {
-                                                return {
-                                                    ...base,
-                                                    backgroundColor: "#47706B",
-                                                    color: '#fff',
+                {
+                    setSelctedFilter && filterData && (
+                        <div className="h-12 rounded-md flex items-center justify-center relative cursor-pointer">
+                            <Image
+                                src={Filter}
+                                alt="filter"
+                                width={50}
+                                onClick={() => setOpenFilter(!openFilter)}
+                                className="hover:brightness-75 transition-transform duration-300 ease-in-out"
+                            />
+                            <AnimatePresence>
+                                {
+                                    openFilter && (
+                                        <motion.div
+                                            className="absolute bg-primarycolor rounded-md p-4 h-12 w-64 lg:w-96 top-16 -right-0 -left-none flex items-center"
+                                            initial={{ opacity: 0, height: "0%", overflow: "hidden" }}
+                                            animate={{ opacity: [0, 0.4, 1], height: ["20%", "150%"], overflow: "visible" }}
+                                            exit={{ opacity: 0, height: "0%", overflow: "hidden" }}
+                                        >
+                                            <motion.span
+                                                className="absolute bg-primarycolor p-2 h-4 w-4 -top-4 right-2"
+                                                style={{
+                                                    clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)"
+                                                }}
+                                            />
+                                            <Select
+                                                defaultValue={filterData[0]}
+                                                isSearchable={false}
+                                                options={filterData}
+                                                className="w-full"
+                                                onChange={handleChange}
+                                                styles={{
+                                                    control(base) {
+                                                        return {
+                                                            ...base,
+                                                            backgroundColor: "#47706B",
+                                                            color: '#fff',
 
-                                                }
-                                            },
-                                            placeholder(base) {
-                                                return {
-                                                    ...base,
-                                                    color: '#fff',
-                                                }
-                                            },
-                                            singleValue(base) {
-                                                return {
-                                                    ...base,
-                                                    color: '#fff',
-                                                }
-                                            },
-                                            input(base) {
-                                                return {
-                                                    ...base,
-                                                    color: '#fff',
-                                                }
-                                            }
+                                                        }
+                                                    },
+                                                    placeholder(base) {
+                                                        return {
+                                                            ...base,
+                                                            color: '#fff',
+                                                        }
+                                                    },
+                                                    singleValue(base) {
+                                                        return {
+                                                            ...base,
+                                                            color: '#fff',
+                                                        }
+                                                    },
+                                                    input(base) {
+                                                        return {
+                                                            ...base,
+                                                            color: '#fff',
+                                                        }
+                                                    }
 
-                                        }}
-                                    />
-                                </motion.div>
-                            )
-                        }
-                    </AnimatePresence>
-                </div>
+                                                }}
+                                            />
+                                        </motion.div>
+                                    )
+                                }
+                            </AnimatePresence>
+                        </div>
+                    )
+                }
             </div>
         </div>
     )

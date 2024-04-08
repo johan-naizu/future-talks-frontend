@@ -2,13 +2,18 @@ import axios from 'axios';
 import { Professional } from '@/types';
 const API_URL = process.env.NEXT_PUBLIC_BACKEND_URL
 
+const config = {
+    params: {
+        populate: '*'
+    }
+}
 
 export const getAllExperts = async () => {
     try {
 
         const response = await axios.get<{
             data: Professional[]
-        }>(`${API_URL}/api/professionals?populate=*`);
+        }>(`${API_URL}/api/professionals`, config);
 
         return response.data;
     }
@@ -22,7 +27,7 @@ export const getCourseById = async (id: string) => {
 
         const response = await axios.get<{
             data: Professional
-        }>(`${API_URL}/api/professionals/${id}?populate=*`);
+        }>(`${API_URL}/api/professionals/${id}`, config);
 
         return response.data;
     }

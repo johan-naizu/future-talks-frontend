@@ -23,7 +23,7 @@ const Contact = () => {
             </div>
 
             <div className={"mt-24 w-full h-full flex items-center justify-center " + poppins.className}>
-                <div className="w-4/5 h-full lg:h-[500px] bg-white border border-primarycolor rounded-3xl overflow-hidden p-2 flex flex-col lg:flex-row">
+                <div className="w-full lg:w-4/5 mx-4 lg:m-0 h-full lg:h-[500px] bg-white border border-primarycolor rounded-3xl overflow-hidden p-2 flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/3 bg-primarycolor h-full rounded-3xl p-10 text-white flex flex-col relative overflow-hidden">
                         <Image
                             src={Circle}
@@ -59,7 +59,7 @@ const Contact = () => {
 
                     <div className="w-full lg:w-2/3 h-full flex flex-col gap-4 p-4 lg:p-10 mt-10 lg:mt-0">
                         <h1 className="font-bold text-3xl"> Why Future Talks? </h1>
-                        <p className={"text-gray-500 " + sourceCodePro.className}>
+                        <p className={"text-gray-500 max-md:text-sm " + sourceCodePro.className}>
                             Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua. Ut enim ad minim veniam, quisnostrud exercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eufugiat nulla pariatur. Excepteur sint occaecatcupidatat non proident, sunt in culpa qui officiadeserunt mollit anim id est laborum
                         </p>
                         <div className="w-full mt-auto flex justify-end">

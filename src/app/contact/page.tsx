@@ -65,7 +65,7 @@ const Contact = () => {
             </div>
 
             <div className={"mt-24 w-full h-full flex items-center justify-center " + poppins.className}>
-                <div className="w-4/5 h-full lg:h-[600px] bg-white border border-primarycolor rounded-3xl overflow-hidden p-2 flex flex-col lg:flex-row">
+                <div className="w-full lg:w-4/5 mx-4 lg:mx-0 h-full lg:h-[600px] bg-white border border-primarycolor rounded-3xl overflow-hidden p-2 flex flex-col lg:flex-row">
                     <div className="w-full lg:w-1/3 bg-primarycolor h-full rounded-3xl p-10 text-white flex flex-col justify-start lg:justify-between relative overflow-hidden">
                         <Image
                             src={Circle}

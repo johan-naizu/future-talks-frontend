@@ -18,6 +18,10 @@ const Navbar = () => {
             href: "/courses",
         },
         {
+            name: "Colleges",
+            href: "/universities",
+        },
+        {
             name: "Students",
             href: "/students",
         },
@@ -91,7 +95,7 @@ const Navbar = () => {
                 {
                     open && (
                         <motion.div
-                            className="z-[1] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl fixed top-10 right-0 h-[50dvh]"
+                            className="z-[1] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-[#79BCB8] rounded-3xl fixed top-10 right-0 h-[60dvh]"
                             layoutId="dropdown"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}

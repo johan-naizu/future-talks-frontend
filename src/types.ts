@@ -23,6 +23,7 @@ export interface CourseAttributes {
     // specialisation: string,
     courseType: CourseType,
     description: string,
+    requirements?: string,
     logo?: {
         data: Picture,
     }
@@ -89,6 +90,9 @@ export interface UniversityAttributes {
     location: string,
     address: string,
     remarks: string,
+    students: {
+        data: Student[]
+    }
 }
 
 
