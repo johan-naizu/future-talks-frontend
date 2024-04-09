@@ -15,7 +15,6 @@ import { AnimatePresence } from 'framer-motion';
 
 const Universities = () => {
     const { canShowPopup, universities } = useCourseContext();
-    console.log(canShowPopup);
     const [searchText, setSearchText] = useState('');
     const [filteredUniversities, setFilteredUniversities] = useState<{ data: University[] }>({ data: [] });
     const [popup, setPopup] = useState(false);

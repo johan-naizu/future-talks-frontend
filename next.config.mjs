@@ -14,8 +14,10 @@ const nextConfig = {
     images: {
         remotePatterns: [
             {
+                protocol: 'https',
                 hostname: 'api.futuretalks.jonaz.tech',
-                pathname: '*',
+                pathname: '**/**',
+                port: '',
             }
         ]
     }

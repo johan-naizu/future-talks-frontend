@@ -42,7 +42,7 @@ const CourseSlugPage = () => {
         >
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <div className="flex w-full h-full my-24 px-2 lg:px-8 items-end">
-                <div className={"border border-primarycolor rounded-3xl w-full lg:w-2/3 bg-white h-full p-10  lg:px-20 xl:px-24 shadow-2xl " + neueRegrade.className}>
+                <div className={"border border-primarycolor rounded-3xl w-full lg:w-2/3 bg-white h-full p-10  lg:px-20 xl:px-24 shadow-2xl min-h-screen " + neueRegrade.className}>
                     <div className="relative">
                         <div className="flex items-center justify-center gap-4 h-18 md:h-36 gap-24">
                             <div className="relative self-start">
@@ -75,7 +75,7 @@ const CourseSlugPage = () => {
 
                     <div className={"w-full lg:w-4/5 mt-10 " + sourceCodePro.className}>
                         <h2 className="text-2xl font-bold mt-4">Requriements</h2>
-                        <p className="mt-4 font-semibold text-lg text-gray-500">{course?.attributes?.requirements || course?.attributes.description}</p>
+                        <p className="mt-4 font-semibold text-lg text-gray-500">{course?.attributes?.requirements}</p>
                     </div>
 
                     <div className="w-full md:w-1/3 lg:w-1/4 text-xs lg:text-md mt-10">

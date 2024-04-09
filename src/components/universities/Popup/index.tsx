@@ -42,11 +42,13 @@ const Popup = ({
                         />
                     </svg>
                 </span>
-
-                <Button
-                    onClick={() => router.push("/apply")}
-                    text="Apply Now"
-                />
+                <span className="w-3/4">
+                    <Button
+                        onClick={() => router.push("/apply")}
+                        text="Apply Now"
+                        invert
+                    />
+                </span>
             </div>
         </motion.div>
     )
