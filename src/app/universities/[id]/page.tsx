@@ -95,7 +95,7 @@ const UniversitySlugPage = () => {
 
             <h1 className="font-semibold mt-24 text-xl"> Alumni remarks </h1>
             <div className="mt-24 px-48 w-full h-full flex overflow-hidden items-center  relative">
-                <div className="w-full relative overflow-hidden">
+                <div className="w-full relative overflow-hidden flex items-center justify-center gap-10">
                     {
                         (university?.attributes.students?.data.length || 0) > 0 ? (
                             <>

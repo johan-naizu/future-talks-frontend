@@ -29,6 +29,7 @@ const CourseSlugPage = () => {
         if (courses) {
             const course = courses.data.find(course => course.id == params.id);
             setCourse(course);
+            setStudents(course?.attributes.students?.data || [])
         }
     }, [courses, params.id])
 
@@ -99,7 +100,7 @@ const CourseSlugPage = () => {
 
             <h1 className="font-semibold mt-24 text-xl"> Students who&apos;ve taken the course</h1>
             <div className="mt-24 px-48 w-full h-full flex overflow-hidden items-center  relative">
-                <div className="w-full relative overflow-hidden">
+                <div className="w-full relative overflow-hidden flex items-center justify-center gap-10">
                     {
                         (course?.attributes.students?.data.length || 0) > 0 ? (
                             <>

@@ -14,7 +14,8 @@ export const getAllUniversities = async () => {
             data: University[]
         }>(`${API_URL}/api/universities`, {
             params: {
-                'populate[students][populate]': "*"
+                'populate[students][populate]': "*",
+                'populate[images][populate]': '*'
             }
         });
 

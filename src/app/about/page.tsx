@@ -11,11 +11,11 @@ const Contact = () => {
 
     const router = useRouter();
     return (
-        <div className="w-screen h-full relative mt-32 mb-24">
+        <div className="w-screen h-full relative pt-32 pb-24">
             <Image
                 src={Grid}
                 alt="Contact"
-                className="absolute top-0 left-0 w-full h-full -z-10"
+                className="object-fit-cover absolute top-0 left-0 w-full h-full -z-10"
             />
 
             <div className={"flex items-center justify-center gap-4 h-18 md:h-36 gap-24 " + neueRegrade.className}>

@@ -10,11 +10,19 @@ import PageTemplate from '@/components/general/PageTemplate';
 import CardContainer from '@/components/general/CardContainer';
 import { filter as fuzzyFilter } from 'fuzzy';
 import { useCourseContext } from '@/hooks/useCourseContext';
+import Popup from '@/components/universities/Popup';
+import { AnimatePresence } from 'framer-motion';
 
-const Courses = () => {
-    const { universities } = useCourseContext();
-    const [searchText, setSearchText] = useState<string>('');
+const Universities = () => {
+    const { canShowPopup, universities } = useCourseContext();
+    console.log(canShowPopup);
+    const [searchText, setSearchText] = useState('');
     const [filteredUniversities, setFilteredUniversities] = useState<{ data: University[] }>({ data: [] });
+    const [popup, setPopup] = useState(false);
+
+    useEffect(() => {
+        setTimeout(() => setPopup(canShowPopup), 1000)
+    })
 
     useEffect(() => {
         const filteredData = fuzzyFilter(searchText, universities?.data || [], {
@@ -32,6 +40,15 @@ const Courses = () => {
         <PageTemplate
             className="w-screen min-h-screen h-full relative"
         >
+            <AnimatePresence>
+                {
+                    popup && (
+                        <Popup
+                            setShow={setPopup}
+                        />
+                    )
+                }
+            </AnimatePresence>
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <CoverPage
                 title="Universities"
@@ -49,4 +66,4 @@ const Courses = () => {
     )
 }
 
-export default Courses;
+export default Universities;

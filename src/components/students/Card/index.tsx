@@ -3,7 +3,7 @@ import Button from "@/components/general/Button";
 import { Professional, Student } from "@/types";
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
-
+import Marquee from "react-fast-marquee";
 
 const Card = ({
     id,
@@ -20,6 +20,9 @@ const Card = ({
         return () => clearInterval(interval);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [images.length]);
+
+
+    const coursesTaken = attributes.courses?.data.map((course) => course.attributes.name).join(",\t");
 
     return (
         <>
@@ -43,10 +46,21 @@ const Card = ({
                                 height={100}
                             />
                             <motion.div
-                                className="flex flex-col w-full"
+                                className="flex flex-col"
                                 layoutId={`student-card-${id}-header`}>
                                 <span className="font-medium text-lg">{attributes.name}</span>
-                                <span className="font-regular text-neutral-500">{attributes.courses?.data[0].attributes.name || "N/A"}</span>
+                                <span className="font-regular text-neutral-500 w-24">
+                                    {
+                                        attributes.courses?.data.length === 1
+                                            ? (
+                                                attributes.courses?.data[0].attributes.name
+                                            ) : (
+                                                <Marquee gradient={false} speed={80} className="w-24">
+                                                    {coursesTaken || "N/A"}
+                                                </Marquee>
+                                            )
+                                    }
+                                </span>
                             </motion.div>
                         </div>
                         <motion.div

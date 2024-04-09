@@ -15,7 +15,7 @@ export const getAllCourses = async () => {
             data: Course[]
         }>(`${API_URL}/api/courses`, {
             params: {
-                'populate[*][populate]': "*"
+                'populate[students][populate]': "*"
             }
         });
 
