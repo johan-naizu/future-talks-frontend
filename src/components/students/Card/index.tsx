@@ -8,7 +8,10 @@ import Marquee from "react-fast-marquee";
 const Card = ({
     id,
     attributes,
-}: Student | Professional) => {
+    removeShadow,
+}: (Student | Professional) & {
+    removeShadow?: boolean
+}) => {
     const [show, setShow] = useState(false);
     const [current, setCurrent] = useState(0);
     const [images, setImages] = useState<string[]>([]);
@@ -29,7 +32,7 @@ const Card = ({
             {
                 !show && (
                     <motion.div
-                        className="w-full bg-white shadow-2xl shadow-primarycolor/40 border border-primarycolor h-full lg:h-72 rounded-3xl p-8 font-inherit flex flex-col relative"
+                        className={`w-full bg-white ${!removeShadow ? 'shadow-2xl shadow-primarycolor/40' : ''} border border-primarycolor h-full lg:h-72 rounded-3xl p-8 font-inherit flex flex-col relative`}
                         layoutId={`student-card-${id}`}
                         onClick={() => setShow(true)}
                     >

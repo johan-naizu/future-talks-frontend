@@ -11,7 +11,6 @@ const Popup = ({
     setShow: Dispatch<SetStateAction<boolean>>
 }) => {
     const router = useRouter();
-    const { setCanShowPopup } = useCourseContext();
 
     return (
         <motion.div
@@ -29,11 +28,7 @@ const Popup = ({
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        onClick={() => {
-                            setShow(false);
-                            setCanShowPopup(false);
-                        }}
-                    >
+                        onClick={() => setShow(false)}>
                         <path
                             strokeLinecap="round"
                             strokeLinejoin="round"

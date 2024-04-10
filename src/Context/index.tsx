@@ -8,8 +8,6 @@ import { getAllUniversities } from "@/lib/university";
 export const CourseContext = createContext<{
     courses?: { data: Course[] }
     universities?: { data: University[] }
-    canShowPopup: boolean
-    setCanShowPopup: Dispatch<SetStateAction<boolean>>
 } | undefined>(undefined);
 
 export const CourseContextProvider = ({
@@ -19,7 +17,6 @@ export const CourseContextProvider = ({
 }) => {
     const [courses, setCourses] = useState<{ data: Course[] } | undefined>(undefined);
     const [universities, setUniversities] = useState<{ data: University[] } | undefined>(undefined);
-    const [canShowPopup, setCanShowPopup] = useState(true);
 
     useEffect(() => {
         const getData = async () => {
@@ -36,8 +33,6 @@ export const CourseContextProvider = ({
         <CourseContext.Provider value={{
             courses,
             universities,
-            canShowPopup,
-            setCanShowPopup
         }}>
             {children}
         </CourseContext.Provider>

@@ -14,14 +14,10 @@ import Popup from '@/components/universities/Popup';
 import { AnimatePresence } from 'framer-motion';
 
 const Universities = () => {
-    const { canShowPopup, universities } = useCourseContext();
+    const { universities } = useCourseContext();
     const [searchText, setSearchText] = useState('');
     const [filteredUniversities, setFilteredUniversities] = useState<{ data: University[] }>({ data: [] });
-    const [popup, setPopup] = useState(false);
 
-    useEffect(() => {
-        setTimeout(() => setPopup(canShowPopup), 1000)
-    })
 
     useEffect(() => {
         const filteredData = fuzzyFilter(searchText, universities?.data || [], {
@@ -39,15 +35,6 @@ const Universities = () => {
         <PageTemplate
             className="w-screen min-h-screen h-full relative"
         >
-            <AnimatePresence>
-                {
-                    popup && (
-                        <Popup
-                            setShow={setPopup}
-                        />
-                    )
-                }
-            </AnimatePresence>
             <Image src={Grid} alt="bg" className="absolute top-0 left-0 w-full h-full object-cover -z-10" />
             <CoverPage
                 title="Universities"
