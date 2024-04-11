@@ -11,7 +11,7 @@ const Contact = () => {
 
     const router = useRouter();
     return (
-        <div className="w-screen h-full relative pt-32 pb-24">
+        <div className="w-screen min-h-screen h-full relative pt-32 pb-24">
             <Image
                 src={Grid}
                 alt="Contact"
@@ -63,7 +63,7 @@ const Contact = () => {
                             Lorem ipsum dolor sit amet, consectetur adipiscingelit, sed do eiusmod tempor incididunt ut labore etdolore magna aliqua. Ut enim ad minim veniam, quisnostrud exercitation ullamco laboris nisi ut aliquipex ea commodo consequat. Duis aute irure dolor inreprehenderit in voluptate velit esse cillum dolore eufugiat nulla pariatur. Excepteur sint occaecatcupidatat non proident, sunt in culpa qui officiadeserunt mollit anim id est laborum
                         </p>
                         <div className="w-full mt-auto flex justify-end">
-                            <div className="w-full md:w-1/3 xl:w-1/4 ">
+                            <div className="w-full md:w-1/3 xl:w-1/4 text-xs lg:text-md">
                                 <Button
                                     text="Contact Us"
                                     rounded

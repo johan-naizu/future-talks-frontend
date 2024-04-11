@@ -107,7 +107,7 @@ const Contact = () => {
                                 }}
                                 whileHover={{
                                     backgroundColor: "white",
-                                    color: "black"
+                                    color: "#79BCB8"
                                 }}
                                 transition={{
                                     duration: 0.5
@@ -123,7 +123,7 @@ const Contact = () => {
                                 }}
                                 whileHover={{
                                     backgroundColor: "white",
-                                    color: "black"
+                                    color: "#79BCB8"
                                 }}
                                 transition={{
                                     duration: 0.5
@@ -140,7 +140,7 @@ const Contact = () => {
                                 }}
                                 whileHover={{
                                     backgroundColor: "white",
-                                    color: "black"
+                                    color: "#79BCB8"
                                 }}
                                 transition={{
                                     duration: 0.5

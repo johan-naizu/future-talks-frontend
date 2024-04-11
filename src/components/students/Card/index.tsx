@@ -152,7 +152,8 @@ const Card = ({
                                         layoutId={`student-card-${id}-header`}
                                     >
                                         <span className="font-medium text-lg">{attributes.name}</span>
-                                        <span className="font-regular text-neutral-500">{attributes.courses?.data[0].attributes.name || "N/A"}</span>
+                                        {/* <span className="font-regular text-neutral-500">{attributes.courses?.data[0].attributes.name || "N/A"}</span> */}
+                                        <span className="font-regular text-neutral-500">{coursesTaken}</span>
                                     </motion.div>
 
                                     <hr className="text-white" />

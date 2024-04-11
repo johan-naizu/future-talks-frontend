@@ -82,7 +82,7 @@ const CourseSlugPage = () => {
                     </div>
 
                     <div className={"w-full lg:w-4/5 mt-10 " + sourceCodePro.className}>
-                        <h2 className="text-2xl font-bold mt-4">Requriements</h2>
+                        <h2 className="text-2xl font-bold mt-4">Requirements</h2>
                         <p className="mt-4 font-semibold text-lg text-gray-500">{course?.attributes?.requirements}</p>
                     </div>
 
