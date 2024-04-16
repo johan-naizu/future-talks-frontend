@@ -4,7 +4,7 @@ import Image from "next/image";
 import { useMemo, useState } from "react";
 import logo from "/public/logo.svg";
 import { neueRegrade } from "@/fonts";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import Hamburger from "hamburger-react";
 const Navbar = () => {
@@ -48,7 +48,7 @@ const Navbar = () => {
 
     const pathname = usePathname();
     const currentPath = pathname.split("/")[1];
-
+    const router = useRouter();
     const [open, setOpen] = useState(false);
     return (
         <>
@@ -78,9 +78,9 @@ const Navbar = () => {
                 <div className="w-full items-center justify-end gap-8 py-2 px-4 hidden md:flex">
                     {
                         navItems.map((item, index) => (
-                            <Link
+                            <button
                                 key={index}
-                                href={item.href}
+                                onClick={() => router.push(item.href)}
                                 className={`relative p-1 px-2 text-primarycolor font-medium text-sm xl:text-md ${item.label === "Apply" ? "bg-primarycolor text-white px-4 py-2 rounded-full" : ""}`}
                             >
                                 {
@@ -94,7 +94,7 @@ const Navbar = () => {
                                 <span className="z-10">
                                     {item.label}
                                 </span>
-                            </Link>
+                            </button>
                         ))
                     }
                 </div>
@@ -111,14 +111,16 @@ const Navbar = () => {
                         >
                             {
                                 navItems.map((item, index) => (
-                                    <Link
+                                    <button
                                         key={index}
-                                        href={item.href}
+                                        onClick={() => {
+                                            setOpen(false)
+                                            router.push(item.href)
+                                        }}
                                         className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.label === "Apply" ? "bg-primarycolor text-white p-2" : ""} ${(item.name === currentPath && item.label !== "Apply") ? "bg-white text-primarycolor" : "text-white   "}`}
-                                        onClick={() => setOpen(false)}
                                     >
                                         {item.label}
-                                    </Link>
+                                    </button>
                                 ))
                             }
                         </motion.div>

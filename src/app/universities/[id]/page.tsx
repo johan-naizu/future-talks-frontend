@@ -123,12 +123,14 @@ const UniversitySlugPage = () => {
                         </div>
                     </div>
 
-                    <div className="font-semibold text-xl text-gray-500 relative mt-24 lg:mt-0">
-                        {university?.attributes.location}
+                    <div className="font-semibold text-sm text-gray-500 relative mt-24 lg:mt-10 flex flex-col">
+                        <span className="w-full lg:w-2/3">
+                            {university?.attributes.address}
+                        </span>
                         <Image
                             src={gradTypeUnderline}
                             alt="underline"
-                            className="left-0 absolute"
+                            className="left-0 -bottom-4 absolute"
                         />
                     </div>
 
