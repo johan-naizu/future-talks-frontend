@@ -4,7 +4,7 @@ import Grid from '/public/Gride.svg'
 import { neueRegrade, poppins, sourceCodePro } from "@/fonts";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faBuildingColumns, faUserGraduate } from "@fortawesome/free-solid-svg-icons";
-import Circle from '/public/circle-contact-both.svg';
+import Circle from '/public/circle-contact-both-blue.svg';
 import Button from "@/components/general/Button";
 import { useRouter } from "next/navigation";
 const Contact = () => {

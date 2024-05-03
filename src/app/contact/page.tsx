@@ -8,28 +8,34 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faMapMarker } from "@fortawesome/free-solid-svg-icons/faMapMarker";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
-import Circle from '/public/circle-contact-both.svg';
-import Button from "@/components/general/Button";
+import Circle from '/public/circle-contact-both-blue.svg';
 import { useState } from "react";
 import { generateMessage, sendMessage } from "@/lib/getInTouch";
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { useCourseContext } from "@/hooks/useCourseContext";
 const Contact = () => {
 
+
+    const { courses, universities } = useCourseContext();
     const [formData, setFormData] = useState<{
         fname: string,
         lname: string,
         email: string,
         phone: string,
-        message: string
+        message: string,
+        course: string,
+        university: string,
     }>({
         fname: "",
         lname: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
+        course: "",
+        university: ""
     })
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -102,12 +108,12 @@ const Contact = () => {
                             <motion.a
                                 className="rounded-full p-2 flex items-center justify-center"
                                 initial={{
-                                    backgroundColor: "#79BCB8",
+                                    backgroundColor: "#34B0DA",
                                     color: "white"
                                 }}
                                 whileHover={{
                                     backgroundColor: "white",
-                                    color: "#79BCB8"
+                                    color: "#34B0DA"
                                 }}
                                 transition={{
                                     duration: 0.5
@@ -118,12 +124,12 @@ const Contact = () => {
                             <motion.a
                                 className="rounded-full p-2 flex items-center justify-center"
                                 initial={{
-                                    backgroundColor: "#79BCB8",
+                                    backgroundColor: "#34B0DA",
                                     color: "white"
                                 }}
                                 whileHover={{
                                     backgroundColor: "white",
-                                    color: "#79BCB8"
+                                    color: "#34B0DA"
                                 }}
                                 transition={{
                                     duration: 0.5
@@ -135,12 +141,12 @@ const Contact = () => {
                                 className="rounded-full p-2 flex items-center justify-center"
 
                                 initial={{
-                                    backgroundColor: "#79BCB8",
+                                    backgroundColor: "#34B0DA",
                                     color: "white"
                                 }}
                                 whileHover={{
                                     backgroundColor: "white",
-                                    color: "#79BCB8"
+                                    color: "#34B0DA"
                                 }}
                                 transition={{
                                     duration: 0.5
@@ -203,17 +209,52 @@ const Contact = () => {
                                 />
                             </div>
                         </div>
+                        <div className="flex flex-col lg:flex-row gap-2 w-full items-center justify-center">
+                            {/* <div className="flex w-full flex-col gap-2 text-gray-500 text-gray-500 focus-within:text-black">
+                                <label htmlFor="message" className="text-sm text-inherit font-medium">Message</label>
+                                <input
+                                    type="text"
+                                    name="message"
+                                    id="message"
+                                    onChange={handleChange}
+                                    className="p-2 border-0 border-b-2 rounded-none focus:outline-0 focus:border-black active:outline-0 hover:outline-0 h-8 resize-none"
+                                    value={formData.message}
+                                />
+                            </div> */}
+                            <div className="flex w-full flex-col gap-2 text-gray-500 focus-within:text-black">
+                                <label htmlFor="course" className="text-sm text-inherit font-medium">Course</label>
+                                <select
+                                    name="course"
+                                    id="course"
+                                    onChange={handleChange}
+                                    className="p-2 border-0 border-b-2 rounded-none focus:outline-0 focus:border-black active:outline-0 hover:outline-0 h-10 resize-none"
+                                    value={formData.course}
+                                >
+                                    {
+                                        courses?.data.map((course) => (
+                                            <option key={course.id} value={course.id}>{course.attributes.name}</option>
+                                        ))
 
-                        <div className="flex w-full flex-col gap-2 text-gray-500 text-gray-500 focus-within:text-black">
-                            <label htmlFor="message" className="text-sm text-inherit font-medium">Message</label>
-                            <input
-                                type="text"
-                                name="message"
-                                id="message"
-                                onChange={handleChange}
-                                className="p-2 border-0 border-b-2 rounded-none focus:outline-0 focus:border-black active:outline-0 hover:outline-0 h-8 resize-none"
-                                value={formData.message}
-                            />
+                                    }
+                                </select>
+                            </div>
+
+                            <div className="flex w-full flex-col gap-2 text-gray-500 focus-within:text-black">
+                                <label htmlFor="university" className="text-sm text-inherit font-medium">College</label>
+                                <select
+                                    name="university"
+                                    id="university"
+                                    onChange={handleChange}
+                                    className="p-2 border-0 border-b-2 rounded-none focus:outline-0 focus:border-black active:outline-0 hover:outline-0 h-10 resize-none"
+                                    value={formData.university}
+                                >
+                                    {
+                                        universities?.data.map((university) => (
+                                            <option key={university.id} value={university.id}>{university.attributes.name}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
                         </div>
 
                         <div className="flex justify-end w-full">

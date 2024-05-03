@@ -68,7 +68,7 @@ const Contact = () => {
                     />
                 </div>
                 <div className="w-full h-full flex items-center justify-center p-2">
-                    <form className="shadow-xl rounded-xl bg-[#79BCB8] p-8 md:w-2/3" onSubmit={handleSubmit}>
+                    <form className="shadow-xl rounded-xl bg-[#1587AD] p-8 md:w-2/3" onSubmit={handleSubmit}>
                         <div className="flex flex-col">
                             <label htmlFor="name">Name</label>
                             <input
@@ -101,7 +101,7 @@ const Contact = () => {
                             />
                         </div>
                         <div className="flex flex-col items-start justify-center mt-2">
-                            <button className="flex bg-white rounded-full font-medium text-[#79BCB8] text-xs gap-2 p-2 items-center justify-center">
+                            <button className="flex bg-white rounded-full font-medium text-[#1587AD] text-xs gap-2 p-2 px-6 items-center justify-center">
                                 <Image src={send} alt="send" width={10} height={10} />
                                 Submit
                             </button>
