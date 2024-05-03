@@ -7,17 +7,22 @@ import { ChangeEvent, FormEvent, useState } from "react";
 import { sendMessage } from "@/lib/getInTouch";
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useCourseContext } from "@/hooks/useCourseContext";
 
 
 const Contact = () => {
+    const { courses, universities } = useCourseContext();
+
     const [formData, setFormData] = useState({
         name: "",
         email: "",
-        message: "",
+        course: "1",
+        university: "1"
     })
 
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        console.log(e.target.value);
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -26,17 +31,25 @@ const Contact = () => {
 
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (!formData.name || !formData.email || !formData.message) {
+        if (!formData.name || !formData.email || !formData.course || !formData.university) {
+            console.log(formData)
             return toast.error("Please fill in all fields")
         }
 
         try {
-            await sendMessage(formData);
+            await sendMessage({
+                name: formData.name,
+                email: formData.email,
+                phoneNumber: "",
+                course: formData.course,
+                university: formData.university,
+            });
             toast.success("Message sent successfully")
             setFormData({
                 name: "",
                 email: "",
-                message: "",
+                course: "",
+                university: ""
             })
         }
         catch (error) {
@@ -89,16 +102,37 @@ const Contact = () => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className="flex flex-col">
-                            <label htmlFor="message">Message</label>
-                            <textarea
-                                name="message"
-                                id="message"
-                                cols={30}
-                                rows={10}
-                                value={formData.message}
-                                onChange={handleChange}
-                            />
+                        <div className="flex flex-col md:flex-row w-full gap-2">
+                            <div className="flex flex-col w-full">
+                                <label htmlFor="course">Course</label>
+                                <select
+                                    name="course"
+                                    id="course"
+                                    value={formData.course}
+                                    onChange={handleChange}
+                                >
+                                    {
+                                        courses?.data.map(course => (
+                                            <option value={course.id} key={course.id}>{course.attributes.name}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
+                            <div className="flex flex-col w-full">
+                                <label htmlFor="university"> College </label>
+                                <select
+                                    name="university"
+                                    id="univerisity"
+                                    value={formData.university}
+                                    onChange={handleChange}
+                                >
+                                    {
+                                        universities?.data.map((university) => (
+                                            <option key={university.id} value={university.id}>{university.attributes.name}</option>
+                                        ))
+                                    }
+                                </select>
+                            </div>
                         </div>
                         <div className="flex flex-col items-start justify-center mt-2">
                             <button className="flex bg-white rounded-full font-medium text-[#1587AD] text-xs gap-2 p-2 px-6 items-center justify-center">

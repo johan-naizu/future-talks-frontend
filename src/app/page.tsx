@@ -4,6 +4,7 @@ import PageTemplate from "@/components/general/PageTemplate";
 import Contact from "@/components/landing/Contact";
 import Courses from "@/components/landing/Courses";
 import Hero from "@/components/landing/Hero";
+import Messages from "@/components/landing/Messages";
 import Poster from "@/components/landing/Poster";
 
 export default function Home() {
@@ -11,6 +12,9 @@ export default function Home() {
     <PageTemplate className="w-screen h-full">
       <section id="hero-section">
         <Hero />
+      </section>
+      <section id="messages">
+        <Messages />
       </section>
       <section id="links">
         <Poster />

@@ -103,7 +103,7 @@ const UniversitySlugPage = () => {
                                 alt="logo"
                                 width={1000}
                                 height={1000}
-                                className="h-10 lg:h-24 w-10 lg:w-24 object-fit-cover"
+                                className="h-10 lg:h-24 w-10 lg:w-24 object-cover"
                             />
                         </AnimatePresence>
                     </span>

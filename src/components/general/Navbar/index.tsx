@@ -5,7 +5,6 @@ import { useMemo, useState } from "react";
 import logo from "/public/logo.svg";
 import { neueRegrade } from "@/fonts";
 import { usePathname, useRouter } from "next/navigation";
-import Link from "next/link";
 import Hamburger from "hamburger-react";
 const Navbar = () => {
     const navItems = useMemo(() => [

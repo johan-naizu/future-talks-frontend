@@ -10,9 +10,10 @@ import { faMapMarker } from "@fortawesome/free-solid-svg-icons/faMapMarker";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
 import Circle from '/public/circle-contact-both-blue.svg';
 import { useState } from "react";
-import { generateMessage, sendMessage } from "@/lib/getInTouch";
+import { sendMessage } from "@/lib/getInTouch";
 import { Bounce, toast, ToastContainer } from "react-toastify";
 import { useCourseContext } from "@/hooks/useCourseContext";
+import PageTemplate from "@/components/general/PageTemplate";
 const Contact = () => {
 
 
@@ -22,7 +23,6 @@ const Contact = () => {
         lname: string,
         email: string,
         phone: string,
-        message: string,
         course: string,
         university: string,
     }>({
@@ -30,9 +30,8 @@ const Contact = () => {
         lname: "",
         email: "",
         phone: "",
-        message: "",
-        course: "",
-        university: ""
+        course: "1",
+        university: "1"
     })
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -45,10 +44,17 @@ const Contact = () => {
     const handleSubmit = async (e: React.FormEvent<HTMLButtonElement>) => {
         e.preventDefault();
         try {
+            // await sendMessage({
+            //     name: `${formData.fname} ${formData.lname}`,
+            //     email: formData.email,
+            //     message: generateMessage(formData.message, formData.fname, formData.lname, formData.phone)
+            // })
             await sendMessage({
                 name: `${formData.fname} ${formData.lname}`,
                 email: formData.email,
-                message: generateMessage(formData.message, formData.fname, formData.lname, formData.phone)
+                phoneNumber: formData.phone,
+                course: formData.course,
+                university: formData.university,
             })
             toast.success("Message sent successfully")
         }
@@ -59,11 +65,11 @@ const Contact = () => {
     }
 
     return (
-        <div className="w-screen h-full relative mt-32 mb-24">
+        <PageTemplate className="w-screen h-full relative pt-32 pb-24">
             <Image
                 src={Grid}
                 alt="Contact"
-                className="absolute top-0 left-0 w-full h-full -z-10"
+                className="absolute top-0 left-0 w-full h-full -z-10 object-cover"
             />
 
             <div className={"flex items-center justify-center gap-4 h-18 md:h-36 gap-24 " + neueRegrade.className}>
@@ -287,7 +293,7 @@ const Contact = () => {
                 theme="dark"
                 transition={Bounce}
             />
-        </div>
+        </PageTemplate>
     )
 }
 

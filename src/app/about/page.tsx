@@ -7,15 +7,16 @@ import { faBook, faBuildingColumns, faUserGraduate } from "@fortawesome/free-sol
 import Circle from '/public/circle-contact-both-blue.svg';
 import Button from "@/components/general/Button";
 import { useRouter } from "next/navigation";
+import PageTemplate from "@/components/general/PageTemplate";
 const Contact = () => {
 
     const router = useRouter();
     return (
-        <div className="w-screen min-h-screen h-full relative pt-32 pb-24">
+        <PageTemplate className="w-screen min-h-screen h-full relative pt-32 pb-24">
             <Image
                 src={Grid}
                 alt="Contact"
-                className="object-fit-cover absolute top-0 left-0 w-full h-full -z-10"
+                className="object-cover absolute top-0 left-0 w-full h-full -z-10"
             />
 
             <div className={"flex items-center justify-center gap-4 h-18 md:h-36 gap-24 " + neueRegrade.className}>
@@ -74,7 +75,7 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </PageTemplate>
     )
 }
 
