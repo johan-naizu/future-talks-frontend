@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import grid from "/public/Gride.svg";
 import contactImage from '/public/contactImage.svg';

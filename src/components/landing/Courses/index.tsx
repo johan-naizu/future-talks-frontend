@@ -1,9 +1,10 @@
 import { neueRegrade } from "@/fonts";
 import Card from "./Card";
-import { getTrendingCourses } from "@/lib/course";
+import { useCourseContext } from "@/hooks/useCourseContext";
 
-const Courses = async () => {
-    const courses = await getTrendingCourses()
+const Courses = () => {
+    // const courses = await getTrendingCourses()
+    const { courses } = useCourseContext();
     return (
         <div className={`w-screen flex flex-col h-full bg-[#f5f5f5] ${neueRegrade.className}`}>
             <h1 className="text-3xl font-extrabold p-4 w-full text-center mt-4"> Trending Courses </h1>

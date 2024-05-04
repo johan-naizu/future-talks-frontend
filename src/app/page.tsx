@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import PageTemplate from "@/components/general/PageTemplate";
 import Contact from "@/components/landing/Contact";

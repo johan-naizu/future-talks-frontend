@@ -18,7 +18,7 @@ const AnimatedText = ({
         topTextAnimation: {
             rest: {
                 y: 0,
-                color: invert ? "#47706B" : "#fff",
+                color: invert ? "#1587AD" : "#fff",
             },
             hover: {
                 y: "-110%",
@@ -35,7 +35,7 @@ const AnimatedText = ({
             },
             hover: {
                 y: 0,
-                color: invert ? "#fff" : "#47706B",
+                color: invert ? "#fff" : "#1587AD",
                 transition: {
                     duration: 0.3,
                     ease: [0.6, 0.01, 0.05, 0.95]

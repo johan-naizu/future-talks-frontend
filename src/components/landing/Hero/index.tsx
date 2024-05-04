@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Waves from '/public/waves.svg';
 import Hello from '/public/hello.svg';

@@ -98,7 +98,7 @@ const CoverPage = ({
                                                     control(base) {
                                                         return {
                                                             ...base,
-                                                            backgroundColor: "#47706B",
+                                                            backgroundColor: "#1587AD",
                                                             color: '#fff',
 
                                                         }
