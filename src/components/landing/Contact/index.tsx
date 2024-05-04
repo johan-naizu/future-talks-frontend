@@ -24,7 +24,6 @@ const Contact = () => {
 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-        console.log(e.target.value);
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -34,7 +33,6 @@ const Contact = () => {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         if (!formData.name || !formData.email || !formData.course || !formData.university) {
-            console.log(formData)
             return toast.error("Please fill in all fields")
         }
 

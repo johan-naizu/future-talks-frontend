@@ -51,7 +51,6 @@ const Navbar = () => {
     const [open, setOpen] = useState(false);
     const { scrollYProgress } = useScroll();
     const transparency = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
-    console.log(transparency)
 
     return (
         <>
