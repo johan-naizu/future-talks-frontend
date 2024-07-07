@@ -1,8 +1,9 @@
 "use client";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
 import logo from "/public/logo.svg";
+import logoBlue from "/public/logo-blue.svg";
 import { neueRegrade } from "@/fonts";
 import { usePathname, useRouter } from "next/navigation";
 import Hamburger from "hamburger-react";
@@ -49,23 +50,18 @@ const Navbar = () => {
     const currentPath = pathname.split("/")[1];
     const router = useRouter();
     const [open, setOpen] = useState(false);
-    const { scrollYProgress } = useScroll();
-    const transparency = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
 
     return (
         <>
             <motion.nav className="w-full h-16 flex fixed top-0 z-[10000] overflow-hidden">
-                <motion.span className="-z-10 bg-white w-full h-full absolute top-0 left-0"
-                    style={{ opacity: transparency }}
-                />
-                <div className={`h-full flex items-center w-full md:w-1/3 py-2 px-4 bg-primarycolor md:rounded-br-2xl justify-between gap-4 font-semibold text-[0.7rem] lg:text-sm xl:text-[1.2rem] ${neueRegrade.className}`}>
-                    <Image src={logo} alt="logo" width={40} />
-                    <span className="text-white hidden md:block text-center"> Future Talks </span>
-                    <span className="w-1/3 border hidden md:block" />
-                    <div className="block md:hidden flex items-center justify-center overflow-hidden w-full">
-                        <span className="w-full font-semibold text-lg text-white">
+                <div className={`h-full w-full flex items-center md:w-1/3 py-2 px-4 bg-primarycolor md:bg-white font-semibold text-[0.7rem] lg:text-sm xl:text-[1.2rem] ${neueRegrade.className}`}>
+                    <Image src={logoBlue} alt="logo" width={40} />
+                    {/* <span className="text-white hidden md:block text-center"> Future Talks </span> */}
+                    {/* <span className="w-1/3 border hidden md:block" /> */}
+                    <div className="block md:hidden flex items-center justify-end overflow-hidden w-full">
+                        {/* <span className="w-full font-semibold text-lg text-white">
                             Future Talks
-                        </span>
+                        </span> */}
                         <div className="z-[1000000000]">
                             <Hamburger toggled={open} toggle={setOpen} color="white" />
                         </div>
@@ -80,7 +76,7 @@ const Navbar = () => {
                     </div>
                 </div>
 
-                <div className="w-full items-center justify-end gap-8 py-2 px-4 hidden md:flex">
+                <div className="w-full items-center justify-end gap-8 py-2 px-4 hidden md:flex bg-white">
                     {
                         navItems.map((item, index) => (
                             <button
