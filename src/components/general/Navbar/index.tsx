@@ -105,7 +105,7 @@ const Navbar = () => {
                     open && (
                         <>
                             <motion.div
-                                className="z-[2] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-primarycolor shadow-[0_35px_60px_-30px_rgba(0,0,0,1)] rounded-3xl fixed top-10 right-0 h-[60dvh]"
+                                className="z-[2] w-full justify-center items-center gap-4 py-2 px-16 flex flex-col md:hidden bg-white shadow-[0_35px_60px_-30px_rgba(0,0,0,1)] rounded-3xl fixed top-10 right-0 h-[60dvh]"
                                 layoutId="dropdown"
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
@@ -119,7 +119,7 @@ const Navbar = () => {
                                                 setOpen(false)
                                                 router.push(item.href)
                                             }}
-                                            className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.label === "Apply" ? "bg-[#FF9039] text-white p-2" : ""} ${(item.name === currentPath && item.label !== "Apply") ? "bg-white text-primarycolor" : "text-white   "}`}
+                                            className={`flex items-center justify-center relative p-2 px-32 w-full text-center font-medium text-sm xl:text-md rounded-full ${item.label === "Apply" ? "bg-[#FF9039] text-white p-2" : ""} ${(item.name === currentPath && item.label !== "Apply") ? "bg-primarycolor text-white" : "text-primarycolor"}`}
                                         >
                                             {item.label}
                                         </button>
