@@ -88,7 +88,7 @@ const Navbar = () => {
                                     item.name === currentPath && item.label !== "Apply" && (
                                         <motion.span
                                             layoutId="nav-item-bottom"
-                                            className="absolute left-1/4 bottom-0 w-1/2 p-[0.1rem] rounded-sm bg-primarycolor -z-10"
+                                            className="absolute left-1/4 -bottom-1 w-1/2 p-[0.1rem] rounded-sm bg-primarycolor z-1"
                                         />
                                     )
                                 }
