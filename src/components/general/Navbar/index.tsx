@@ -2,8 +2,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useMemo, useState } from "react";
-import logo from "/public/logo.svg";
-import logoBlue from "/public/logo-blue.svg";
+import logo from '/public/logo.png';
 import { neueRegrade } from "@/fonts";
 import { usePathname, useRouter } from "next/navigation";
 import Hamburger from "hamburger-react";
@@ -54,8 +53,8 @@ const Navbar = () => {
     return (
         <>
             <motion.nav className="w-full h-16 flex fixed top-0 z-[10000] overflow-hidden">
-                <div className={`h-full w-full flex items-center md:w-1/3 py-2 px-4 bg-primarycolor md:bg-white font-semibold text-[0.7rem] lg:text-sm xl:text-[1.2rem] ${neueRegrade.className}`}>
-                    <Image src={logoBlue} alt="logo" width={40} />
+                <div className={`h-full w-full flex items-center md:w-1/3 py-2 px-4 bg-white font-semibold text-[0.7rem] lg:text-sm xl:text-[1.2rem] ${neueRegrade.className}`}>
+                    <Image src={logo} alt="logo" width={150} />
                     {/* <span className="text-white hidden md:block text-center"> Future Talks </span> */}
                     {/* <span className="w-1/3 border hidden md:block" /> */}
                     <div className="block md:hidden flex items-center justify-end overflow-hidden w-full">
@@ -63,7 +62,7 @@ const Navbar = () => {
                             Future Talks
                         </span> */}
                         <div className="z-[1000000000]">
-                            <Hamburger toggled={open} toggle={setOpen} color="white" />
+                            <Hamburger toggled={open} toggle={setOpen} color="#1587AD" />
                         </div>
                         {
                             !open && (
